@@ -1,0 +1,2 @@
+class WantAnswersController < ApplicationController
+end

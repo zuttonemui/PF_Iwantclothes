@@ -1,0 +1,2 @@
+class WantAnswer < ApplicationRecord
+end

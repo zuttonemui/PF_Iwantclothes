@@ -1,0 +1,2 @@
+module WantAnswersHelper
+end
