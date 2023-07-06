@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :genres, only: [:create, :update, :destroy]
-  
-  get 'rooms/index'
+
+  resources :rooms, only: [:index]
   resources :letters, only: [:show, :create]
-  
+
   get '/search', to: 'searches#search'
 end

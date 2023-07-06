@@ -3,6 +3,7 @@
   <head>
     <title>こんな服欲しい！</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="refresh" content="12.3; url=/about">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,12 +12,8 @@
   </head>
 
   <body>
-    <div class="whole">
-      <%= render 'layouts/header' %>
-      <main>
-        <%= yield %>
-      </main>
-      <%= render 'layouts/footer' %>
-    </div>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

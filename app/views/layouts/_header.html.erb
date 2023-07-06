@@ -1,0 +1,60 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="flex-direction: column">
+    <a class="navbar-brand" href="/about"><%= image_tag 'logo_c.png', :height => '30' %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="px-3">
+          <%= link_to user_path(current_user),class: 'nav-link text-dark' do %>
+            ミー
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%=  link_to want_clothes_path,class: 'nav-link text-dark' do %>
+            アイウォント
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%=  link_to recommends_path ,class: 'nav-link text-dark' do %>
+            リコメンド
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%=  link_to rooms_path ,class: 'nav-link text-dark' do %>
+            レター
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
+            ログアウト
+          <% end %>
+        </li>
+      <% else %>
+        <li class="px-3">
+          <%= link_to want_clothes_path,class: 'nav-link text-dark' do %>
+            ウォント
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%= link_to 'recommends',class: 'nav-link text-dark' do %>
+            リコメンド
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+            サインアップ
+          <% end %>
+        </li>
+        <li class="px-3">
+          <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
+            ログイン
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
