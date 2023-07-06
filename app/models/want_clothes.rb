@@ -1,0 +1,2 @@
+class WantClothes < ApplicationRecord
+end

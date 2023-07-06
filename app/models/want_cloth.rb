@@ -1,2 +1,0 @@
-class WantCloth < ApplicationRecord
-end

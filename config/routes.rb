@@ -1,18 +1,27 @@
 Rails.application.routes.draw do
-  get 'letters/show'
-  get 'rooms/index'
-  get 'relationships/followings'
-  get 'relationships/followers'
-  get 'recommends/index'
-  get 'recommends/new'
-  get 'recommends/edit'
-  get 'want_clothes/index'
-  get 'want_clothes/new'
-  get 'want_clothes/edit'
-  get 'users/show'
-  get 'users/ed'
-  get 'homes/top'
-  get 'homes/about'
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root :to => 'homes#top'
+  get '/about' => 'homes#about', as: 'about'
+
+  resources :users, only: [:show, :edit, :update, :unsubscribe, :withdrawal] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
+
+  resources :want_clothes, only: [:index, :new, :edit, :create, :update, :destroy] do
+    resources :want_answers, only: [:create, :destroy]
+  end
+
+  resources :recommends, only: [:index, :new, :edit, :create, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
+
+  resources :genres, only: [:create, :update, :destroy]
+  
+  get 'rooms/index'
+  resources :letters, only: [:show, :create]
+  
+  get '/search', to: 'searches#search'
 end
