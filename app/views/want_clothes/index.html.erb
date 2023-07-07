@@ -9,13 +9,32 @@
       </div>
     </div>
 
-    <div class="col-md-8 px-5">
-      <div class="row">
-        <%= render 'form', want_clothing: @want_clothing %>
-      </div>
-      <div class="row">
-        <%%>
-      </div>
+    <div class="col-md-8">
+      <% if user_signed_in? %>
+        <div class="row mb-4">
+          <%= render 'form', want_clothing: @want_clothing %>
+        </div>
+      <% end %>
+      <% @want_clothes.each do |want_clothes| %>
+        <div class="row mb-3">
+          <section class="col-md-2">
+            <%= image_tag want_clothes.get_profile_image(80,80) %>
+          </section>
+          <section class="col-md-9 want-content">
+            <%= want_clothes.content %>
+          </section>
+
+          <section class="col-md-2">
+            <%= want_clothes.user.name %>
+          </section>
+          <section class="col-md-4">
+            <%= want_clothes.genre.name %>
+          </section>
+          <section class="col-md-5">
+            <%= want_clothes.tag.name %>
+          </section>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

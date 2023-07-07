@@ -1,8 +1,10 @@
 class CreateClothTags < ActiveRecord::Migration[6.1]
   def change
     create_table :cloth_tags do |t|
-      t.integer :target_id,   null:false
-      t.integer :tag_id,      null:false
+      t.references :tag, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      t.references :want_clothes, null: false, foreign_key: true
+      t.references :recommend, null: false, foreign_key: true
 
       t.timestamps
     end

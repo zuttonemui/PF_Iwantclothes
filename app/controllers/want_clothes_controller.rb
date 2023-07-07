@@ -1,5 +1,5 @@
 class WantClothesController < ApplicationController
-  before_action :authenticate_user!, expect: [:index]
+  before_action :authenticate_user!, except: [:index]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -9,7 +9,7 @@ class WantClothesController < ApplicationController
 
   def create
     @want_clothing = WantClothes.new(want_clothes_params)
-    @want_clothing.id = current_user.id
+    @want_clothing.user_id = current_user.id
     # tag_list = params[:want_clothes][:tag_name].split(',')
     if @want_clothing.save
       # @want_clothing.save_tags(tag_list)

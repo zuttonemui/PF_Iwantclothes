@@ -17,7 +17,8 @@ p {
 header {
   position: sticky;
   top: 0;
-  background-color: rgba(255,255,255,0.7);
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   letter-spacing: -0.15em;
 }
@@ -115,6 +116,7 @@ footer {
 }
 
 .mypage-menu {
+	height: 100vh;
 	background-color: navy;
 }
 
@@ -122,4 +124,9 @@ footer {
 .edit-profile {
 	width: 80%;
 	max-width: 400px;
+}
+
+// want
+.want-form {
+	width: 100%;
 }

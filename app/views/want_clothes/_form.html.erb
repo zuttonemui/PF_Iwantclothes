@@ -1,16 +1,21 @@
-<%= form_with model: want_clothing, url: new_want_clothe_path, local:true do |f| %>
+<%= form_with model: want_clothing, url: want_clothes_path, method: :post, local:true do |f| %>
   <div class="row">
-    <div class="col-10 form-group want-form">
-      <%= f.text_area :contnent, class: 'form-control' %>
+    <div class="col-md-9 form-group want-form">
+      <section class="mb-2">
+        <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
+      </section>
+      <section>
+        <%= f.file_field :want_image, class: "form-control-file", accept: "image/*" %>
+      </section>
     </div>
-    <div class="col-2">
-      <%= image_tag get_profile_image(50,50) %>
+    <div class="col-md-2">
+      <%= image_tag current_user.get_profile_image(80,80) %>
     </div>
-    <div class="col-5 form-group want-form">
-      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    <div class="col-md-4 form-group want-form">
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- ジャンル選択 --'}, class: "form-control" %>
     </div>
-    <div class="col-5 form-group want-form">
-      <%= f.text_field :tag_name, class: "form-control" %>
+    <div class="col-md-5 form-group want-form">
+      タグ投稿
     </div>
 
     <div class="col-2 form-group">

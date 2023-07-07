@@ -1,5 +1,5 @@
 class RecommendsController < ApplicationController
-  before_action :authenticate_user!, expect: [:index]
+  before_action :authenticate_user!, except: [:index]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index

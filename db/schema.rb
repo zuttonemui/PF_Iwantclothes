@@ -41,10 +41,16 @@ ActiveRecord::Schema.define(version: 2023_07_05_070536) do
   end
 
   create_table "cloth_tags", force: :cascade do |t|
-    t.integer "target_id", null: false
     t.integer "tag_id", null: false
+    t.integer "user_id", null: false
+    t.integer "want_clothes_id", null: false
+    t.integer "recommend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recommend_id"], name: "index_cloth_tags_on_recommend_id"
+    t.index ["tag_id"], name: "index_cloth_tags_on_tag_id"
+    t.index ["user_id"], name: "index_cloth_tags_on_user_id"
+    t.index ["want_clothes_id"], name: "index_cloth_tags_on_want_clothes_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -128,7 +134,7 @@ ActiveRecord::Schema.define(version: 2023_07_05_070536) do
 
   create_table "want_clothes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "genre_id"
     t.text "content", null: false
     t.integer "budget"
     t.boolean "is_answer", null: false
@@ -138,4 +144,8 @@ ActiveRecord::Schema.define(version: 2023_07_05_070536) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cloth_tags", "recommends"
+  add_foreign_key "cloth_tags", "tags"
+  add_foreign_key "cloth_tags", "users"
+  add_foreign_key "cloth_tags", "want_clothes", column: "want_clothes_id"
 end
