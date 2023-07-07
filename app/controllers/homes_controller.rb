@@ -1,9 +1,8 @@
 class HomesController < ApplicationController
   def top
-    render :layout => "top_layout"
+    render :layout => nil
   end
 
   def about
-    render :layout => "about_layout"
   end
 end

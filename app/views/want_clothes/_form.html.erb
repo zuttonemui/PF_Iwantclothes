@@ -1,0 +1,21 @@
+<%= form_with model: want_clothing, url: new_want_clothe_path, local:true do |f| %>
+  <div class="row">
+    <div class="col-10 form-group want-form">
+      <%= f.text_area :contnent, class: 'form-control' %>
+    </div>
+    <div class="col-2">
+      <%= image_tag get_profile_image(50,50) %>
+    </div>
+    <div class="col-5 form-group want-form">
+      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+    <div class="col-5 form-group want-form">
+      <%= f.text_field :tag_name, class: "form-control" %>
+    </div>
+
+    <div class="col-2 form-group">
+      <%= f.hidden_field :is_answer, value: true %>
+      <%= f.submit "欲しい！", class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+  </div>
+<% end %>

@@ -1,15 +1,19 @@
 @use '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Zen+Kaku+Gothic+Antique&family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Zen+Kaku+Gothic+Antique&family=Zen+Maru+Gothic&display=swap');
 
 * {
-  font-family: 'Zen Maru Gothic', sans-serif;
+  font-family: 'Montserrat','Zen Maru Gothic', sans-serif;
 }
 
 a {
   color: inherit
 }
 
-// ヘッダー
+p {
+	margin: 0;
+}
+
+// header
 header {
   position: sticky;
   top: 0;
@@ -24,7 +28,7 @@ header {
   min-height: 100vh;
 }
 
-// フッター
+// footer
 footer {
   margin-top: auto;
 }
@@ -67,4 +71,55 @@ footer {
 :root {
 	--swiper-navigation-color: #fff;
 	--swiper-pagination-color: #fff;
+}
+
+// mypage
+.polaroid {
+	justify-content: center;
+	position: relative;
+	width: 210px;
+	padding: 15px;
+	padding-bottom: 0;
+	  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+	border: 1px solid #ccc;
+}
+
+.polaroid p {
+	text-align: center;
+	left: 0;
+	line-height: 60px;
+	margin: 0;
+}
+
+.icon {
+	padding: 0 4px;
+	width: 25px;
+}
+
+.introduction {
+	margin: 20px 0;
+}
+
+.gear {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	width: 20px;
+	opacity: 0.6;
+}
+
+.gear:hover {
+	opacity: 1;
+}
+
+.mypage-menu {
+	background-color: navy;
+}
+
+// mypage edit
+.edit-profile {
+	width: 80%;
+	max-width: 400px;
 }

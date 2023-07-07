@@ -18,17 +18,26 @@ import "bootstrap";
 import "../stylesheets/application"
 
 const swiper = new Swiper('.swiper', {
-  //オプションの設定
-  loop: true, //最後までスライドしたら最初の画像に戻る
+  // Optional parameters
+  loop: true,
 
-  //ページネーション表示の設定
-  pagination: {
-    el: '.swiper-pagination', //ページネーションの要素
+  autoplay: {
+    delay:1500,
   },
 
-  //ナビゲーションボタン（矢印）表示の設定
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
   navigation: {
-    nextEl: '.swiper-button-next', //「次へボタン」要素の指定
-    prevEl: '.swiper-button-prev', //「前へボタン」要素の指定
-  }
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
 });

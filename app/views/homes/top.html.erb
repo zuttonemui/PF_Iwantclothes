@@ -1,5 +1,23 @@
-<div class="bg">
-  <div class="video">
-    <%= video_tag("/assets/videos/movie1.mp4", autoplay: :true, loop: :false, muted: :true, style: "width:100%; text-align: center;") %>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>こんな服欲しい！</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="refresh" content="12.3; url=/about">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <main>
+      <div class="bg">
+        <div class="video">
+          <%= video_tag("/assets/videos/movie1.mp4", autoplay: :true, loop: :false, muted: :true, style: "width:100%; text-align: center;") %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
