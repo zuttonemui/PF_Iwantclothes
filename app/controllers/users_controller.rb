@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @want_clothes = @user.want_clothes
+    @want_clothes = WantClothes.where(user_id: @user.id, is_answer: true)
   end
 
   def edit

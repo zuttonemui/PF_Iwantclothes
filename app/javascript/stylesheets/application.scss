@@ -63,7 +63,11 @@ footer {
 	height: 100%;
 }
 
-// homes#about swiper
+// homes#about
+.top-content {
+	min-height: 100vh;
+}
+
 .swiper {
 	width: 600px;
 	height: 400px;
@@ -72,6 +76,11 @@ footer {
 :root {
 	--swiper-navigation-color: #fff;
 	--swiper-pagination-color: #fff;
+}
+
+.top-comment {
+	font-size: 12px;
+  // letter-spacing: -0.15em;
 }
 
 // mypage

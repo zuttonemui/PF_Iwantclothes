@@ -1,12 +1,12 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-4">
-      <div>
+      <div class="category-menu mb-5">
         <h5>カテゴリ</h5>
         まだ
         クリックで開くメニューほしい
       </div>
-      <div>
+      <div class="tag-menu">
         <h5>キーワード</h5>
         まだ
         クリックで開くメニューほしい
@@ -19,33 +19,7 @@
           <%= render 'form', want_clothing: @want_clothing %>
         </div>
       <% end %>
-      <% @want_clothes.each do |want_clothes| %>
-        <div class="row mb-3">
-          <section class="col-md-2">
-            <%= link_to user_path(want_clothes.user) do %>
-              <%= image_tag want_clothes.user.get_profile_image(80,80) %>
-              <%= want_clothes.user.name %>
-            <% end %>
-          </section>
-          <section class="col-md-9 want-content">
-            <%= want_clothes.content %>
-
-            <% if want_clothes.user == current_user %>
-              <%= link_to edit_want_clothe_path(want_clothes) do %>
-                <%= image_tag "edit.png", size: 20, class: "edit" %>
-              <% end %>
-              <%= link_to want_clothe_path(want_clothes), method: :delete do %>
-                <%= image_tag "stash.png", size: 20, class: "stash" %>
-              <% end %>
-            <% end %>
-
-            <!--want_clothes.genre.name-->
-            <%=  %>
-            <!--want_clothes.tag.name-->
-            <%=  %>
-          </section>
-        </div>
-      <% end %>
+      <%= render 'index', want_clothes: @want_clothes %>
     </div>
   </div>
 </div>
