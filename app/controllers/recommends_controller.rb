@@ -7,18 +7,19 @@ class RecommendsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @recommend = Recommend.new
   end
 
   def create
-    @recommend = Recommend.new(recommends_params)
-    @recommend.id = current_user.id
+    @recommend = Recommend.new(recommend_params)
+    @recommend.user_id = current_user.id
     # tag_list = params[:recommends][:tag_name].split(',')
     if @recommend.save
       # @recommend.save_tags(tag_list)
       redirect_to recommends_path
     else
-      @recommends = RecoMmend.all
+      @recommends = Recommend.all
       render 'index'
     end
   end
@@ -50,7 +51,7 @@ class RecommendsController < ApplicationController
     @recommend = Recommend.find(params[:id])
   end
 
-  def recommends_params
-    params.require(:recommends).permit(:genre_id, :content, :recommend_image)
+  def recommend_params
+    params.require(:recommend).permit(:genre_id, :content, :recommend_image)
   end
 end

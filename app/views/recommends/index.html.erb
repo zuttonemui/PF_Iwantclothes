@@ -1,2 +1,23 @@
-<h1>Recommends#index</h1>
-<p>Find me in app/views/recommends/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row justify-content-center">
+    <div class="col-md-12 d-flex">
+      <!--新規投稿-->
+      <% if user_signed_in? %>
+        <div class="m-3 pb-3 recommend-item">
+          <%= link_to new_recommend_path do %>
+            <div class="new-button">
+              ♡
+            </div>
+          <% end %>
+          <p>new recommend</p>
+        </div>
+      <% end %>
+      <!--一覧-->
+      <% @recommends.each do |recommend| %>
+        <div class="d-flex m-3 pb-3 recommend-item">
+          <%= image_tag recommend.get_recommend_image(260,260) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

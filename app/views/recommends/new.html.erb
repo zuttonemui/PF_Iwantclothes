@@ -1,2 +1,12 @@
-<h1>Recommends#new</h1>
-<p>Find me in app/views/recommends/new.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render "users/info", user: @user %>
+    </div>
+    <div class="col-md-6 offset-1">
+      <div class="recommend-form">
+        <%= render 'form', recommend: @recommend %>
+      </div>
+    </div>
+  </div>
+</div>

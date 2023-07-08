@@ -126,7 +126,10 @@ footer {
 
 .mypage-menu {
 	height: 100vh;
-	background-color: navy;
+	background-image: url(/app/assets/slide/main6.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 // mypage edit
@@ -156,4 +159,29 @@ footer {
 }
 .edit:hover {
 	opacity: 0.6;
+}
+
+// recommend
+.recommend-item {
+	justify-content: center;
+	position: relative;
+	width: 300px;
+	padding: 20px;
+	padding-bottom: 0;
+	  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+	border: 1px solid #ccc;
+}
+
+.new-button {
+	width: 260px;
+	height: 260px;
+	line-height: 260px;
+	text-align: center;
+}
+
+.recommend-item p {
+	text-align: center;
+	margin-top: 10px;
 }
