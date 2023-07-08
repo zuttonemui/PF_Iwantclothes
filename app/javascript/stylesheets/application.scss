@@ -130,3 +130,21 @@ footer {
 .want-form {
 	width: 100%;
 }
+
+.stash {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.stash:hover {
+	opacity: 0.6;
+}
+
+.edit {
+	position: absolute;
+	bottom: 0;
+	right: 30px;
+}
+.edit:hover {
+	opacity: 0.6;
+}

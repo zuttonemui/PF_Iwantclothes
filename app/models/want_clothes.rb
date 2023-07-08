@@ -1,7 +1,7 @@
 class WantClothes < ApplicationRecord
   belongs_to :user
-  belongs_to :genre
-  has_many :want_answers, dependent: :destroy
+  # belongs_to :genre
+  has_many :want_answers
   has_many :cloth_tags, dependent: :destroy
   has_many :tags, through: :cloth_tags
 
