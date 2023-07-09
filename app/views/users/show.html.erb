@@ -7,7 +7,11 @@
     <div class="col-md-7">
       <h4>ウォント</h4>
       <%= render 'want_clothes/index', want_clothes: @want_clothes %>
+
       <h4>リコメンド</h4>
+      <div class="row d-flex">
+        <%= render 'recommends/index', recommends: @recommends %>
+      </div>
     </div>
   </div>
 </div>

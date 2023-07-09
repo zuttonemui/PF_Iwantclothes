@@ -13,6 +13,11 @@ p {
 	margin: 0;
 }
 
+h4,
+h5 {
+  letter-spacing: -0.15em;
+}
+
 // header
 header {
   position: sticky;
@@ -78,9 +83,18 @@ footer {
 	--swiper-pagination-color: #fff;
 }
 
+.slide {
+	width: 600px;
+	height: 400px;
+}
+
 .top-comment {
 	font-size: 12px;
-  // letter-spacing: -0.15em;
+}
+
+.top-wants,
+.top-recommends {
+	width: 25%;
 }
 
 // mypage
@@ -143,22 +157,21 @@ footer {
 	width: 100%;
 }
 
-.stash {
+.want-content .stash {
 	position: absolute;
 	bottom: 0;
 	right: 0;
 }
-.stash:hover {
+
+.stash:hover,
+.edit:hover {
 	opacity: 0.6;
 }
 
-.edit {
+.want-content .edit {
 	position: absolute;
 	bottom: 0;
 	right: 30px;
-}
-.edit:hover {
-	opacity: 0.6;
 }
 
 // recommend
@@ -167,7 +180,6 @@ footer {
 	position: relative;
 	width: 300px;
 	padding: 20px;
-	padding-bottom: 0;
 	  -webkit-box-shadow: 3px 3px 3px #777;
      -moz-box-shadow: 3px 3px 3px #777;
           box-shadow: 3px 3px 3px #777;
@@ -181,7 +193,25 @@ footer {
 	text-align: center;
 }
 
-.recommend-item p {
-	text-align: center;
+.item p{
 	margin-top: 10px;
+	font-size: 14px;
+}
+
+.item {
+	text-align: center;
+	padding-bottom: 70px;
+}
+
+.recommend-user {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	line-height: 50px;
+}
+
+.recommend-edit-btn {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }

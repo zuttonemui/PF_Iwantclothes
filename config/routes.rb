@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :want_clothes, only: [:index, :new, :edit, :create, :update, :destroy] do
+  resources :want_clothes, only: [:index, :edit, :create, :update, :destroy] do
     resources :want_answers, only: [:create, :destroy]
   end
 

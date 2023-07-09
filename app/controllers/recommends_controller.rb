@@ -3,7 +3,7 @@ class RecommendsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @recommends = Recommend.all
+    @recommends = Recommend.all.order(created_at: :desc)
   end
 
   def new
@@ -19,8 +19,8 @@ class RecommendsController < ApplicationController
       # @recommend.save_tags(tag_list)
       redirect_to recommends_path
     else
-      @recommends = Recommend.all
-      render 'index'
+      @user = current_user
+      render 'new'
     end
   end
 
@@ -31,7 +31,7 @@ class RecommendsController < ApplicationController
   end
 
   def update
-    if @recommend.update(recommends_patams)
+    if @recommend.update(recommend_params)
       redirect_to recommends_path
     else
       render 'edit'
@@ -52,6 +52,6 @@ class RecommendsController < ApplicationController
   end
 
   def recommend_params
-    params.require(:recommend).permit(:genre_id, :content, :recommend_image)
+    params.require(:recommend).permit(:genre_id, :content, :recommend_image, :url)
   end
 end

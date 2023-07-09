@@ -12,8 +12,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require('jquery')
-require('jquery_ujs')
 
 import "jquery";
 import "popper.js";

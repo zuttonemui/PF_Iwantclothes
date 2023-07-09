@@ -1,27 +1,35 @@
 <% want_clothes.each do |want_clothes| %>
   <div class="row mb-3">
-    <section class="col-md-2">
+    <div class="col-md-2">
       <%= link_to user_path(want_clothes.user) do %>
         <%= image_tag want_clothes.user.get_profile_image(80,80) %>
         <%= want_clothes.user.name %>
       <% end %>
-    </section>
-    <section class="col-md-9 want-content">
-      <%= want_clothes.content %>
-
-      <% if want_clothes.user == current_user %>
-        <%= link_to edit_want_clothe_path(want_clothes) do %>
-          <%= image_tag "edit.png", size: 20, class: "edit" %>
+    </div>
+    <div class="col-md-9 px-5 want-content">
+      <div class="row pb-3">
+        <%= want_clothes.content %>
+      </div>
+      <div class="row pb-2">
+        <% if want_clothes.want_image.present? %>
+          <%= image_tag want_clothes.get_want_image(300,300) %>
         <% end %>
-        <%= link_to want_clothe_path(want_clothes), method: :delete do %>
-          <%= image_tag "stash.png", size: 20, class: "stash" %>
+        <% if want_clothes.user == current_user %>
+          <%= link_to edit_want_clothe_path(want_clothes) do %>
+            <%= image_tag "edit.png", size: 20, class: "edit" %>
+          <% end %>
         <% end %>
-      <% end %>
+        <% if want_clothes.user == current_user || want_clothes.user.is_admin == true %>
+          <%= link_to want_clothe_path(want_clothes), method: :delete do %>
+            <%= image_tag "stash.png", size: 20, class: "stash" %>
+          <% end %>
+        <% end %>
 
       <!--want_clothes.genre.name-->
       <%=  %>
       <!--want_clothes.tag.name-->
       <%=  %>
-    </section>
+      </div>
+    </div>
   </div>
 <% end %>

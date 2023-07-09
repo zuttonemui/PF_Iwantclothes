@@ -77,7 +77,8 @@ ActiveRecord::Schema.define(version: 2023_07_05_070536) do
   create_table "recommends", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
-    t.text "content", null: false
+    t.string "content", null: false
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,25 +4,25 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <%= image_tag 'slide/main0.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main0.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main1.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main1.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main2.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main2.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main3.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main3.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main4.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main4.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main5.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main5.jpg', class: "slide" %>
           </div>
           <div class="swiper-slide">
-            <%= image_tag 'slide/main6.jpg', width:600, height:400 %>
+            <%= image_tag 'slide/main6.jpg', class: "slide" %>
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -42,11 +42,22 @@
     </div>
   </div>
 
-  <div class="row">
-    <h4>ウォント</h4>
-    4つくらい投稿並べる
-  </div><div class="row mt-5">
-    <h4>リコメンド</h4>
-    4つくらい投稿並べる
+  <h4>ウォント</h4>
+  <div class="row d-flex mb-5">
+    <% @want_clothes.each do |want_clothes| %>
+      <div class="p-3 top-wants">
+        <%= link_to want_clothes.content, want_clothes_path %>
+      </div>
+    <% end %>
+  </div>
+  <h4>リコメンド</h4>
+  <div class="row d-flex">
+    <% @recommends.each do |recommend| %>
+      <div class="p-3 top-recommends">
+        <%= link_to recommends_path do %>
+          <%= image_tag recommend.get_recommend_image(200,200) %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

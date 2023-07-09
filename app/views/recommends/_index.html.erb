@@ -1,0 +1,29 @@
+<% recommends.each do |recommend| %>
+  <div class="m-3 pb-3 recommend-item">
+    <div class="item">
+      <%= image_tag recommend.get_recommend_image(260,260) %>
+      <p><%= recommend.content %></p>
+      <% if recommend.url.present? %>
+        <p><%= Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
+      <% end %>
+    </div>
+    <div class="d-flex mt-3 recommend-user">
+      <%= link_to user_path(recommend.user) do%>
+        <%= image_tag recommend.user.get_profile_image(50,50), class: "rounded-circle mr-4" %>
+        <%= recommend.user.name %>
+      <% end %>
+    </div>
+    <div class="recommend-edit-btn">
+      <% if recommend.user == current_user %>
+        <%= link_to edit_recommend_path(recommend) do %>
+          <%= image_tag 'edit.png', size: 20, class: "edit" %>
+        <% end %>
+      <% end %>
+      <% if recommend.user == current_user || recommend.user.is_admin == true %>
+        <%= link_to recommend_path(recommend), method: :delete do %>
+          <%= image_tag "stash.png", size: 20, class: "stash" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

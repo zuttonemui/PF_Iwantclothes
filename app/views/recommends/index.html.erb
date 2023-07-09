@@ -9,15 +9,11 @@
               ♡
             </div>
           <% end %>
-          <p>new recommend</p>
+          <p class="text-center">new recommend</p>
         </div>
       <% end %>
       <!--一覧-->
-      <% @recommends.each do |recommend| %>
-        <div class="d-flex m-3 pb-3 recommend-item">
-          <%= image_tag recommend.get_recommend_image(260,260) %>
-        </div>
-      <% end %>
+      <%= render 'index', recommends: @recommends %>
     </div>
   </div>
 </div>

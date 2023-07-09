@@ -21,13 +21,14 @@ class WantClothesController < ApplicationController
   end
 
   def edit
+    @want_clothes = WantClothes.all.order(created_at: :desc)
     unless @want_clothing.user == current_user
       redirect_to want_clothes_path
     end
   end
 
   def update
-    if @want_clothing.update(want_clothes_patams)
+    if @want_clothing.update(want_clothes_params)
       redirect_to want_clothes_path
     else
       render 'edit'
