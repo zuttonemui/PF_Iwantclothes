@@ -5,6 +5,7 @@ class WantClothesController < ApplicationController
   def index
     @want_clothes = WantClothes.all.order(created_at: :desc)
     @want_clothing = WantClothes.new
+    @want_answer = WantAnswer.new
   end
 
   def create

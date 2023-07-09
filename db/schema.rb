@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2023_07_05_070536) do
 
   create_table "want_answers", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "want_cloth_id", null: false
+    t.integer "want_clothes_id", null: false
     t.text "content", null: false
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
