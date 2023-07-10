@@ -1,0 +1,10 @@
+<% if recommend.favorited_by?(current_user) %>
+  <%= link_to recommend_favorites_path(recommend), method: :delete, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <!--♥-->
+  <% end %>
+<% else %>
+  <%= link_to recommend_favorites_path(recommend), method: :post, remote: true do %>
+    <i class="far fa-heart" aria-hidden="true"></i>
+  <% end %>
+<% end %>

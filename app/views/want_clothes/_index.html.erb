@@ -14,22 +14,34 @@
         <% if want_clothes.want_image.present? %>
           <%= image_tag want_clothes.get_want_image(300,300) %>
         <% end %>
+
         <% if want_clothes.user == current_user %>
           <%= link_to edit_want_clothe_path(want_clothes) do %>
-            <%= image_tag "edit.png", size: 20, class: "edit" %>
-          <% end %>
-        <% end %>
-        <% if want_clothes.user == current_user || want_clothes.user.is_admin == true %>
-          <%= link_to want_clothe_path(want_clothes), method: :delete do %>
-            <%= image_tag "stash.png", size: 20, class: "stash" %>
+            <i class="fas fa-pen"></i>
           <% end %>
         <% end %>
 
-      <!--want_clothes.genre.name-->
-      <%=  %>
-      <!--want_clothes.tag.name-->
-      <%=  %>
+        <% if want_clothes.user == current_user || want_clothes.user.is_admin == true %>
+          <%= link_to want_clothe_path(want_clothes), method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        <% end %>
+
+        <!--want_clothes.genre.name-->
+        <%=  %>
+        <!--want_clothes.tag.name-->
+        <%=  %>
       </div>
-    </div>
   </div>
+  <div class="row mb-3 answer-index">
+    <% want_clothes.want_answers.each do |answer| %>
+      <% answer.content %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="row pb-3">
+
+    </div>
+  <% end %>
+</div>
 <% end %>

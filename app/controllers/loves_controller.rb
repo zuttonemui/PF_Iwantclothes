@@ -1,2 +1,0 @@
-class LovesController < ApplicationController
-end

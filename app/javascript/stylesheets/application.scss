@@ -1,4 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Zen+Kaku+Gothic+Antique&family=Zen+Maru+Gothic&display=swap');
 
 * {
@@ -10,12 +11,18 @@ a {
 }
 
 p {
-	margin: 0;
+  margin: 0;
 }
 
 h4,
 h5 {
   letter-spacing: -0.15em;
+}
+
+.fa-pen,
+.fa-trash {
+  color: #2e2e2e;
+  font-size: 15px;
 }
 
 // header
@@ -39,108 +46,97 @@ footer {
   margin-top: auto;
 }
 
-// devise
-.devise-h {
-  letter-spacing: -0.15em;
-}
-
 // homes#top
 .bg{
-	position: fixed;
-	width: 100%;
-	height: 100%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 .video{
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }
 .video video{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	object-fit: cover;
-	transform: translate(-50%, -50%);
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
 }
-
 // homes#about
 .top-content {
-	min-height: 100vh;
+  min-height: 100vh;
 }
-
 .swiper {
-	width: 600px;
-	height: 400px;
+  width: 600px;
+  height: 400px;
 }
-
 :root {
-	--swiper-navigation-color: #fff;
-	--swiper-pagination-color: #fff;
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
 }
-
 .slide {
-	width: 600px;
-	height: 400px;
+  width: 600px;
+  height: 400px;
 }
-
 .top-comment {
-	font-size: 12px;
+  font-size: 14px;
 }
-
 .top-wants,
 .top-recommends {
-	width: 25%;
+  width: 25%;
+  font-size: 14px;
 }
 
 // mypage
 .polaroid {
-	justify-content: center;
-	position: relative;
-	width: 210px;
-	padding: 15px;
-	padding-bottom: 0;
-	  -webkit-box-shadow: 3px 3px 3px #777;
-     -moz-box-shadow: 3px 3px 3px #777;
-          box-shadow: 3px 3px 3px #777;
-	border: 1px solid #ccc;
+  justify-content: center;
+  position: relative;
+  width: 210px;
+  padding: 15px;
+  padding-bottom: 0;
+    -webkit-box-shadow: 3px 3px 3px #777;
+    -moz-box-shadow: 3px 3px 3px #777;
+  box-shadow: 3px 3px 3px #777;
+  border: 1px solid #ccc;
 }
 
 .polaroid p {
-	text-align: center;
-	left: 0;
-	line-height: 60px;
-	margin: 0;
+  text-align: center;
+  left: 0;
+  line-height: 60px;
+  margin: 0;
 }
 
 .icon {
-	padding: 0 4px;
-	width: 25px;
+  padding: 0 4px;
+  width: 25px;
 }
 
 .introduction {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .gear {
-	position: absolute;
-	top: 12px;
-	left: 12px;
-	width: 20px;
-	opacity: 0.6;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 20px;
+  opacity: 0.6;
 }
 
 .gear:hover {
-	opacity: 1;
+  opacity: 1;
 }
-
 .mypage-menu {
-	height: 100vh;
-	background-image: url(/app/assets/slide/main6.jpg);
+  height: 100vh;
+  background-image: url(/app/assets/slide/main6.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -148,70 +144,73 @@ footer {
 
 // mypage edit
 .edit-profile {
-	width: 80%;
-	max-width: 400px;
+  width: 80%;
+  max-width: 400px;
 }
 
 // want
 .want-form {
-	width: 100%;
+  width: 100%;
 }
 
-.want-content .stash {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+.want-content {
+  font-size: 14px;
 }
 
-.stash:hover,
-.edit:hover {
-	opacity: 0.6;
+.want-content .fa-trash {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-.want-content .edit {
-	position: absolute;
-	bottom: 0;
-	right: 30px;
+.fa-trash:hover,
+.fa-pen:hover {
+  opacity: 0.6;
+}
+
+.want-content .fa-pen {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
 }
 
 // recommend
 .recommend-item {
-	justify-content: center;
-	position: relative;
-	width: 300px;
-	padding: 20px;
-	  -webkit-box-shadow: 3px 3px 3px #777;
-     -moz-box-shadow: 3px 3px 3px #777;
-          box-shadow: 3px 3px 3px #777;
-	border: 1px solid #ccc;
+  justify-content: center;
+  position: relative;
+  width: 300px;
+  padding: 20px;
+    -webkit-box-shadow: 3px 3px 3px #777;
+    -moz-box-shadow: 3px 3px 3px #777;
+  box-shadow: 3px 3px 3px #777;
+  border: 1px solid #ccc;
 }
 
 .new-button {
-	width: 260px;
-	height: 260px;
-	line-height: 260px;
-	text-align: center;
+  width: 260px;
+  height: 260px;
+  line-height: 260px;
+  text-align: center;
 }
 
 .item p{
-	margin-top: 10px;
-	font-size: 14px;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .item {
-	text-align: center;
-	padding-bottom: 70px;
+  text-align: center;
+  padding-bottom: 70px;
 }
-
 .recommend-user {
-	position: absolute;
-	bottom: 20px;
-	left: 20px;
-	line-height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  line-height: 50px;
 }
 
 .recommend-edit-btn {
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }

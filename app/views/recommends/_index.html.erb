@@ -13,17 +13,23 @@
         <%= recommend.user.name %>
       <% end %>
     </div>
-    <div class="recommend-edit-btn">
-      <% if recommend.user == current_user %>
-        <%= link_to edit_recommend_path(recommend) do %>
-          <%= image_tag 'edit.png', size: 20, class: "edit" %>
+    <% if user_signed_in? %>
+      <div class="recommend-edit-btn">
+        <% if recommend.user == current_user %>
+          <%= link_to edit_recommend_path(recommend) do %>
+            <i class="fas fa-pen mr-2"></i>
+          <% end %>
+        <% else %>
+          <span class=<%= "favorite-" + recommend.id.to_s %> >
+            <%= render 'favorites/btn', recommend: recommend %>
+          </span>
         <% end %>
-      <% end %>
-      <% if recommend.user == current_user || recommend.user.is_admin == true %>
-        <%= link_to recommend_path(recommend), method: :delete do %>
-          <%= image_tag "stash.png", size: 20, class: "stash" %>
+        <% if recommend.user == current_user || recommend.user.is_admin == true %>
+          <%= link_to recommend_path(recommend), method: :delete do %>
+            <i class="fas fa-trash ml-1"></i>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

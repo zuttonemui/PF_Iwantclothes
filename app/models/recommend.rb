@@ -7,6 +7,10 @@ class Recommend < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 140 }
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
   def get_recommend_image(width, height)
     unless recommend_image.attached?
       file_path = Rails.root.join("app/assets/images/no-image.png")
