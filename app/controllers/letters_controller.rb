@@ -11,7 +11,7 @@ class LettersController < ApplicationController
     else
       @room = Room.new
       @room.save
-      UserRoom.create(user_id: current_userid, room_id: @room.id)
+      UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
     @letters = @room.letters
@@ -19,8 +19,8 @@ class LettersController < ApplicationController
   end
 
   def create
-    @letter = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    @letter = current_user.letters.new(letter_params)
+    render :validater unless @letter.save
   end
 
   private
@@ -29,6 +29,9 @@ class LettersController < ApplicationController
   end
 
   def reject_non_related
-
+    user = User.find(params[:id])
+    unless current_user.following?(user) && user.following?(current_user)
+      redirect_to books_path
+    end
   end
 end

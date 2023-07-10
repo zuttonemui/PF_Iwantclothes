@@ -1,2 +1,20 @@
-<h1>Letters#show</h1>
-<p>Find me in app/views/letters/show.html.erb</p>
+<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+
+<div class="message">
+  <% @letters.each do |letter| %>
+    <% if letter.user_id == current_user.id %>
+      <p style="text-align: right;"><%= letter.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= letter.message %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <%= render "layouts/errors", obj: @letter %>
+</div>
+
+<%= form_with model: @letter, data: {remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+<% end %>
