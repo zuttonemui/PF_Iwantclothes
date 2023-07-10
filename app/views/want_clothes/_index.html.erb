@@ -16,7 +16,7 @@
         <% end %>
 
         <% if want_clothes.user == current_user %>
-          <%= link_to edit_want_clothe_path(want_clothes) do %>
+          <%= link_to want_clothes_path(id: want_clothes.id) do %>
             <i class="fas fa-pen"></i>
           <% end %>
         <% end %>

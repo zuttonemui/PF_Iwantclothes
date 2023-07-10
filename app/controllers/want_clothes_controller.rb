@@ -3,8 +3,13 @@ class WantClothesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @want_clothes = WantClothes.all.order(created_at: :desc)
-    @want_clothing = WantClothes.new
+    if params[:id].present?
+      @want_clothes = WantClothes.where.not(id: params[:id]).order(created_at: :desc)
+      @want_clothing = WantClothes.find(params[:id])
+    else
+      @want_clothes = WantClothes.all.order(created_at: :desc)
+      @want_clothing = WantClothes.new
+    end
     @answer = WantAnswer.new
     # want_clothes = WantClothes.find(params[:id])
   end

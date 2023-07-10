@@ -2,7 +2,7 @@
   <div class="m-3 pb-3 recommend-item">
     <div class="item">
       <%= image_tag recommend.get_recommend_image(260,260) %>
-      <p><%= recommend.content %></p>
+      <p><%= safe_join(recommend.content.split("\n"),tag(:br)) %></p>
       <% if recommend.url.present? %>
         <p><%= Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
       <% end %>
