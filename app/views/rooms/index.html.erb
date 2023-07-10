@@ -1,8 +1,8 @@
 <% if @rooms.present? %>
   <ul>
-    <%= @rooms.each do |room| %>
+    <% @rooms.each do |room| %>
       <li style="non">
-        <%= room.user_rooms.user.name %>
+        <%= room.id %>
       </li>
     <% end %>
   </ul>

@@ -32,16 +32,18 @@
         <!--want_clothes.tag.name-->
         <%=  %>
       </div>
-  </div>
-  <div class="row mb-3 answer-index">
-    <% want_clothes.want_answers.each do |answer| %>
-      <% answer.content %>
+    </div>
+    <div class="col-md-9 offset-2 mb-3 answer-index">
+      <% want_clothes.want_answers.each do |answer| %>
+        <div class="row">
+          <%= answer.content %>
+        </div>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-md-9 offset-2 pb-3 mb-2">
+        <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
+      </div>
     <% end %>
   </div>
-  <% if user_signed_in? %>
-    <div class="row pb-3">
-
-    </div>
-  <% end %>
-</div>
 <% end %>
