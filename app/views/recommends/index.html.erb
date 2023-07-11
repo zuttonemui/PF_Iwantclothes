@@ -1,19 +1,37 @@
 <div class="container px-5 px-sm-0">
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col-md-12 d-flex">
       <!--新規投稿-->
       <% if user_signed_in? %>
         <div class="m-3 pb-3 recommend-item">
-          <%= link_to new_recommend_path do %>
-            <div class="new-button">
-              ♡
+          <div class="new-button" data-toggle="modal" data-target="#testModal">
+            ♡
+          </div>
+          <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4><div class="modal-title" id="myModalLabel">New Recommend</div></h4>
+                </div>
+                <div class="modal-body">
+                  <%= render 'form', recommend: @recommend %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">exit</button>
+                </div>
+              </div>
             </div>
-          <% end %>
+          </div>
           <p class="text-center">new recommend</p>
         </div>
       <% end %>
       <!--一覧-->
       <%= render 'index', recommends: @recommends %>
+    </div>
+    <div class="col-md-12">
+      test
+      test
+      test
     </div>
   </div>
 </div>

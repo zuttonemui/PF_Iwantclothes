@@ -19,10 +19,10 @@
       <!--ジャンル実装したら編集すること-->
       <%= f.hidden_field :genre_id, value: "1" %>
 
-      <% if request.path_info == new_recommend_path %>
-        <%= f.submit "new recommend", class: 'btn btn-outline-secondary btn-sm px-3' %>
-      <% else %>
+      <% if request.path_info == edit_recommend_path(:id) %>
         <%= f.submit "recommend edit", class: 'btn btn-outline-secondary btn-sm px-3' %>
+      <% else %>
+        <%= f.submit "new recommend", class: 'btn btn-outline-secondary btn-sm px-3' %>
       <% end %>
     </div>
   </div>
