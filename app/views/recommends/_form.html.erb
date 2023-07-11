@@ -1,29 +1,43 @@
-<%= form_with model: recommend, local:true do |f| %>
-  <div class="row pt-5">
-    <div class="col-md-12 form-group mb-3 reccomend-form">
-      <%= f.file_field :recommend_image, class: "form-control-file", accept: "image/*" %>
-    </div>
-    <div class="col-md-12 form-group reccomend-form">
-      <%= f.text_area :content, class: "form-control", placeholder: "こんな服買った！" %>
-    </div>
-    <div class="col-md-11 form-group reccomend-form">
-      <%= f.text_field :url, class: "form-control", placeholder: "ショップURL" %>
-    </div>
-    <div class="col-md-5 form-group reccomend-form">
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- ジャンルまだ --'}, class: "form-control" %>
-    </div>
-    <div class="col-md-6 form-group reccomend-form">
-      タグまだ
-    </div>
-    <div class="col-11 form-group text-center">
-      <!--ジャンル実装したら編集すること-->
-      <%= f.hidden_field :genre_id, value: "1" %>
+<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4><div class="modal-title" id="myModalLabel">New Recommend</div></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: recommend, local:true do |f| %>
+          <div class="row pt-5">
+            <div class="col-md-12 form-group mb-3 reccomend-form">
+              <%= f.file_field :recommend_image, class: "form-control-file", accept: "image/*" %>
+            </div>
+            <div class="col-md-12 form-group reccomend-form">
+              <%= f.text_area :content, class: "form-control", placeholder: "こんな服買った！" %>
+            </div>
+            <div class="col-md-11 form-group reccomend-form">
+              <%= f.text_field :url, class: "form-control", placeholder: "ショップURL" %>
+            </div>
+            <div class="col-md-5 form-group reccomend-form">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- ジャンルまだ --'}, class: "form-control" %>
+            </div>
+            <div class="col-md-6 form-group reccomend-form">
+              タグまだ
+            </div>
+            <div class="col-11 form-group text-center">
+              <!--ジャンル実装したら編集すること-->
+              <%= f.hidden_field :genre_id, value: "1" %>
 
-      <% if request.path_info == edit_recommend_path(:id) %>
-        <%= f.submit "recommend edit", class: 'btn btn-outline-secondary btn-sm px-3' %>
-      <% else %>
-        <%= f.submit "new recommend", class: 'btn btn-outline-secondary btn-sm px-3' %>
-      <% end %>
+              <% if request.path_info == edit_recommend_path(:id) %>
+                <%= f.submit "recommend edit", class: 'btn btn-outline-secondary btn-sm px-3' %>
+              <% else %>
+                <%= f.submit "new recommend", class: 'btn btn-outline-secondary btn-sm px-3' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">exit</button>
+        </div>
     </div>
   </div>
-<% end %>
+</div>

@@ -4,11 +4,11 @@ class RecommendsController < ApplicationController
 
   def index
     @recommends = Recommend.all.order(created_at: :desc)
-  end
-
-  def new
-    @user = current_user
-    @recommend = Recommend.new
+    if params[:id].present?
+      @recommend = Recommend.find(params[:id])
+    else
+      @recommend = Recommend.new
+    end
   end
 
   def create
