@@ -4,7 +4,6 @@ class CreateWantAnswers < ActiveRecord::Migration[6.1]
       t.integer :user_id,       null:false
       t.integer :want_clothes_id, null:false
       t.text :content,          null:false
-      t.string :url
 
       t.timestamps
     end

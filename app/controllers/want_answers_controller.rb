@@ -7,13 +7,11 @@ class WantAnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer.want_clothes_id = want_clothes.id
     @answer.save
-    redirect_to want_clothes_path
   end
 
   def destroy
-    @answer = WantAnswer,find_by(id: params[:id], want_id: params[:want_id])
+    @answer = WantAnswer.find_by(id: params[:id], want_clothes_id: params[:want_clothe_id])
     @answer.destroy
-    redirect_to want_clothes_path
   end
 
   private

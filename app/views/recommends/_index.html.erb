@@ -4,7 +4,7 @@
       <%= image_tag recommend.get_recommend_image(260,260) %>
       <p><%= safe_join(recommend.content.split("\n"),tag(:br)) %></p>
       <% if recommend.url.present? %>
-        <p><%= Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
+        <p><%= raw Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
       <% end %>
     </div>
     <div class="d-flex mt-3 recommend-user">

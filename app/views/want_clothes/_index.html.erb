@@ -12,7 +12,7 @@
       </div>
       <div class="row pb-2">
         <% if want_clothes.want_image.present? %>
-          <%= image_tag want_clothes.get_want_image(300,300) %>
+          <%= image_tag want_clothes.get_want_image(400,300) %>
         <% end %>
 
         <% if want_clothes.user == current_user %>
@@ -33,17 +33,23 @@
         <%=  %>
       </div>
     </div>
-    <div class="col-md-9 offset-2 mb-3 answer-index">
-      <% want_clothes.want_answers.each do |answer| %>
-        <div class="row">
-          <%= answer.content %>
-        </div>
-      <% end %>
-    </div>
+  </div>
+  <% if current_page?(want_clothes_path) %>
     <% if user_signed_in? %>
-      <div class="col-md-9 offset-2 pb-3 mb-2">
-        <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
+      <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
+    <% end %>
+
+    <% if want_clothes.want_answers.present? %>
+      <div class="row">
+        <div class="col-md-8 offset-2 text-right mb-5">
+          <span onclick="obj=document.getElementById('commentopen').style; obj.display=(obj.display=='none')?'block':'none';">
+            <a style="cursor:pointer;">▼comment open</a>
+          </span>
+        </div>
+      </div>
+      <div class="answer-index">
+        <%= render 'want_answers/index', want_clothes: want_clothes %>
       </div>
     <% end %>
-  </div>
+  <% end %>
 <% end %>
