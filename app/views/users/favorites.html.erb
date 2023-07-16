@@ -1,0 +1,16 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "info", user: @user %>
+    </div>
+    <div class="col-md-1 mypage-menu d-flex flex-column">
+      <%= render 'mypage_menu', user: @user %>
+    </div>
+    <div class="col-md-8">
+      <h4>ラブ</h4>
+      <div class="d-flex flex-wrap">
+        <%= render 'recommends/index', recommends: @favorite_recommends %>
+      </div>
+    </div>
+  </div>
+</div>

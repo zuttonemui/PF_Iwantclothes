@@ -4,20 +4,17 @@
       <!--新規投稿-->
       <% if user_signed_in? %>
         <div class="m-3 pb-3 recommend-item">
-          <div class="new-button" data-toggle="modal" data-target="#testModal">
+          <canvas id="canvas" data-toggle="modal" data-target="#newModal">
             ♡
+          </canvas>
+          <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <%= render 'form', recommend: @recommend %>
           </div>
-          <%= render 'form', recommend: @recommend %>
           <p class="text-center">new recommend</p>
         </div>
       <% end %>
       <!--一覧-->
       <%= render 'index', recommends: @recommends %>
-    </div>
-    <div class="col-md-12">
-      test
-      test
-      test
     </div>
   </div>
 </div>

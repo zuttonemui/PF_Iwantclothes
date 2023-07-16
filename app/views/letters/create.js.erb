@@ -1,3 +1,2 @@
-$('.message').append("<p style='text-align: right;'><%= @letter.message %><%= image_tag @letter.user.get_profile_image(50,50), class: "mr-2 rounded-circle" %></p>");
+$('.message').append("<p style='text-align: right;'><%= @letter.message %></p>");
 $('input[type=text]').val("")
-$('input[type=image]').val("")

@@ -16,9 +16,11 @@
     <% if user_signed_in? %>
       <div class="recommend-edit-btn">
         <% if recommend.user == current_user %>
-          <%= link_to want_clothes_path(id: want_clothes.id), data-toggle: "modal" data-target: "#testModal" do %>
-          
+          <span class="recommend-edit" data-toggle="modal" data-target="#editModal">
             <i class="fas fa-pen mr-2"></i>
+          </span>
+          <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <%= render 'recommends/form', recommend: recommend %>
           </div>
         <% else %>
           <span class=<%= "favorite-" + recommend.id.to_s %> >

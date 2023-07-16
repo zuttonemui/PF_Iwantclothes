@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    member do
+      get :favorites
+    end
   end
 
   resources :want_clothes, only: [:index, :create, :update, :destroy] do
@@ -20,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:create, :update, :destroy]
 
-  resources :rooms, only: [:index]
   resources :letters, only: [:show, :create]
 
   get '/search', to: 'searches#search'

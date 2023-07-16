@@ -1,0 +1,15 @@
+<div class="text-center">
+  <%= link_to user_path(user) do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+</div>
+<div class="text-center">
+  <%= link_to favorites_user_path(user) do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+</div>
+<div class="text-center">
+  <%= link_to user_followings_path(user) do %>
+    <i class="fas fa-praying-hands"></i>
+  <% end %>
+</div>

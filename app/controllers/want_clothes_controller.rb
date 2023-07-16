@@ -11,7 +11,6 @@ class WantClothesController < ApplicationController
       @want_clothing = WantClothes.new
     end
     @answer = WantAnswer.new
-    # want_clothes = WantClothes.find(params[:id])
   end
 
   def create

@@ -1,2 +1,23 @@
-<h1>Relationships#followings</h1>
-<p>Find me in app/views/relationships/followings.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "users/info", user: @user %>
+    </div>
+    <div class="col-md-1 mypage-menu d-flex flex-column">
+      <%= render 'users/mypage_menu', user: @user %>
+    </div>
+    <div class="col-md-8">
+      <h4>フォロー</h4>
+      <%= link_to user_followers_path(@user) do %>
+      <p><i class="fas fa-arrows-alt-h"></i>フォロワー</p>
+      <% end %>
+      <div class="mt-4">
+        <% if @users.exists? %>
+          <%= render '/users/index', users: @users %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

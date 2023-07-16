@@ -35,21 +35,26 @@
     </div>
   </div>
   <% if current_page?(want_clothes_path) %>
-    <% if user_signed_in? %>
-      <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
-    <% end %>
-
-    <% if want_clothes.want_answers.present? %>
-      <div class="row">
-        <div class="col-md-8 offset-2 text-right mb-5">
-          <span onclick="obj=document.getElementById('commentopen').style; obj.display=(obj.display=='none')?'block':'none';">
-            <a style="cursor:pointer;">▼comment open</a>
-          </span>
+    <div class="row">
+      <div class="col-md-8 offset-2 text-right mb-5">
+        <span onclick="obj=document.getElementById('commentopen_<%= want_clothes.id.to_s%>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼send answer ?</a>
+        </span>
+      </div>
+    </div>
+    <span id="commentopen_<%= want_clothes.id.to_s %>" style="display: none; clear: both;">
+      <% if user_signed_in? %>
+        <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
+      <% end %>
+      <% if want_clothes.want_answers.present? %>
+        <div class="answer-index_<%= want_clothes.id.to_s %>">
+          <%= render 'want_answers/index', want_clothes: want_clothes %>
         </div>
-      </div>
-      <div class="answer-index">
-        <%= render 'want_answers/index', want_clothes: want_clothes %>
-      </div>
-    <% end %>
+      <% end %>
+    </span>
+  <% elsif current_page?(user_path(want_clothes.user)) && want_clothes.want_answers.present? %>
+    <div class="answer-index_<%= want_clothes.id.to_s %>">
+      <%= render 'want_answers/index', want_clothes: want_clothes %>
+    </div>
   <% end %>
 <% end %>

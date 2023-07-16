@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
-  has_many :user_rooms
-  has_many :letters
+  has_many :entrys, dependent: :destroy
+  has_many :letters, dependent: :destroy
 end
