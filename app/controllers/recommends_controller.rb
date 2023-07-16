@@ -14,9 +14,7 @@ class RecommendsController < ApplicationController
   def create
     @recommend = Recommend.new(recommend_params)
     @recommend.user_id = current_user.id
-    # tag_list = params[:recommends][:tag_name].split(',')
     if @recommend.save
-      # @recommend.save_tags(tag_list)
       redirect_to recommends_path
     else
       @user = current_user

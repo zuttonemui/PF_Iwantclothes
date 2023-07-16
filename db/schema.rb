@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_16_040049) do
+ActiveRecord::Schema.define(version: 2023_07_16_043135) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,18 +42,14 @@ ActiveRecord::Schema.define(version: 2023_07_16_040049) do
 
   create_table "cloth_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "user_id", null: false
     t.integer "want_clothes_id", null: false
-    t.integer "recommend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recommend_id"], name: "index_cloth_tags_on_recommend_id"
     t.index ["tag_id"], name: "index_cloth_tags_on_tag_id"
-    t.index ["user_id"], name: "index_cloth_tags_on_user_id"
     t.index ["want_clothes_id"], name: "index_cloth_tags_on_want_clothes_id"
   end
 
-  create_table "entrys", force: :cascade do |t|
+  create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -144,8 +140,6 @@ ActiveRecord::Schema.define(version: 2023_07_16_040049) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cloth_tags", "recommends"
   add_foreign_key "cloth_tags", "tags"
-  add_foreign_key "cloth_tags", "users"
   add_foreign_key "cloth_tags", "want_clothes", column: "want_clothes_id"
 end

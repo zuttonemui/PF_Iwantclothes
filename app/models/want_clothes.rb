@@ -23,8 +23,20 @@ class WantClothes < ApplicationRecord
     end
 
     new_tags.each do |new|
-      clothes_tag = Tag.find_or_create_by(name: new)
-      self.tags << clothes_tag
+      cloth_tag = Tag.find_or_create_by(name: new)
+      self.tags << cloth_tag
+    end
+  end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      WantClothes.where(content: content)
+    elsif method == 'forward'
+      WantClothes.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      WantClothes.where('title LIKE ?', '%' + content)
+    else
+      WantClothes.where('title LIKE ?', '%' + content + '%')
     end
   end
 end

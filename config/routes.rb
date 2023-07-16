@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:create, :update, :destroy]
 
+  resources :rooms, only:[:index, :show]
   resources :letters, only: [:show, :create]
 
   get '/search', to: 'searches#search'

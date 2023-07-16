@@ -1,0 +1,21 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <% @rooms.each do |room| %>
+        <div class="dm_list__content">
+          <!--IDの送り方要検討-->
+          <%= link_to letter_path(room.id), class: "dm_list__content__link" do %>
+            <div class="dm_list__content__link__box">
+              <h3 class="dm_list__content__link__box__name">
+                <%= opponent_user(room) %>
+              </h3>
+              <p class="dm_list__content__link__box__message">
+                <%= most_new_message_preview(room) %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
