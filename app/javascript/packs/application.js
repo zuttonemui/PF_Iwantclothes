@@ -20,6 +20,7 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 import "./swiper"
+import "./hide_open"
 // import "./heart"
 
 // $(document).on('turbolinks:load', function() {

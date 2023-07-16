@@ -55,9 +55,15 @@
         </li>
       <% end %>
       </ul>
+      <li class="px-3 hide" style="list-style: none;">
+        <i class="fas fa-search"></i>
+      </li>
+      <div class="collapse open">
+        <%= render 'searches/form' %>
+      </div>
     </div>
-    <div class="search">
-      <%= render 'searches/form' %>
-    </div>
+    <!--<div class="hide">-->
+    <!--  <i class="fas fa-search"></i>-->
+    <!--</div>-->
   </nav>
 </header>

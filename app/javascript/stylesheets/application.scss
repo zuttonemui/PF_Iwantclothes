@@ -20,6 +20,18 @@ p {
   font-size: 15px;
 }
 
+.open {
+  display: none;
+}
+
+.hide {
+  cursor: pointer;
+}
+
+.close {
+  
+}
+
 // header
 header {
   position: sticky;

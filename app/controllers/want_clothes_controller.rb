@@ -11,6 +11,8 @@ class WantClothesController < ApplicationController
       @want_clothing = WantClothes.new
     end
     @answer = WantAnswer.new
+    @genres = Genre.all
+    @genre = Genre.new
   end
 
   def create

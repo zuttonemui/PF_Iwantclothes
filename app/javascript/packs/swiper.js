@@ -1,3 +1,4 @@
+/* global $*/
 $(document).on('turbolinks:load', function() {
   $(document).ready(function () {
     if ($(".swiper").length > 0) {

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  want_clothes: one
+  genre: one
+
+two:
+  want_clothes: two
+  genre: two

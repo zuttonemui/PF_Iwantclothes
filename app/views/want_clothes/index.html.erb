@@ -1,10 +1,9 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-4">
-      <div class="category-menu mb-5">
-        <h5>カテゴリ</h5>
-        まだ
-        クリックで開くメニューほしい
+      <div class="category-menu mb-2">
+        <h5 class="hide">カテゴリ</h5>
+          <%= render 'genres/index', genres: @genres, genre: @genre %>
       </div>
       <div class="tag-menu">
         <h5>キーワード</h5>

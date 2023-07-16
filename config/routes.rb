@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :genres, only: [:create, :update, :destroy]
+  resources :genres, only: [:create, :destroy]
 
   resources :rooms, only:[:index, :show]
   resources :letters, only: [:show, :create]
