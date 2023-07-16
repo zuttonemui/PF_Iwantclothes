@@ -13,6 +13,7 @@ class WantClothesController < ApplicationController
     @answer = WantAnswer.new
     @genres = Genre.all
     @genre = Genre.new
+    @tags = Tag.all
   end
 
   def create

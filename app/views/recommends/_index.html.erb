@@ -23,11 +23,13 @@
             <%= render 'recommends/form', recommend: recommend %>
           </div>
         <% else %>
-          <span class=<%= "favorite-" + recommend.id.to_s %> >
-            <%= render 'favorites/btn', recommend: recommend %>
-          </span>
+          <% unless current_user.is_admin == true %>
+            <span class=<%= "favorite-" + recommend.id.to_s %> >
+              <%= render 'favorites/btn', recommend: recommend %>
+            </span>
+          <% end %>
         <% end %>
-        <% if recommend.user == current_user || recommend.user.is_admin == true %>
+        <% if recommend.user == current_user || current_user.is_admin == true %>
           <%= link_to recommend_path(recommend), method: :delete do %>
             <i class="fas fa-trash ml-1"></i>
           <% end %>

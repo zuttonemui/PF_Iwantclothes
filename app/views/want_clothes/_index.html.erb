@@ -1,4 +1,5 @@
 <% want_clothes.each do |want_clothes| %>
+<!--投稿一覧-->
   <div class="row mb-3">
     <div class="col-md-2">
       <%= link_to user_path(want_clothes.user) do %>
@@ -41,22 +42,37 @@
         <%= link_to want_clothes_path(id: want_clothes.id) do %>
           <i class="fas fa-pen"></i>
         <% end %>
+
+<!--コメント欄を閉じる-->
+        <% if want_clothes.is_answer == true %>
+          <%= form_with model: want_clothes, method: :patch do |f| %>
+            <%= f.hidden_field :is_answer, :value => false %>
+            <%= f.submit "resolved"%>
+          <% end %>
+        <% end %>
       <% end %>
 
-      <% if want_clothes.user == current_user || want_clothes.user.is_admin == true %>
+      <% if want_clothes.user == current_user || current_user.is_admin == true %>
         <%= link_to want_clothe_path(want_clothes), method: :delete do %>
           <i class="fas fa-trash"></i>
         <% end %>
       <% end %>
     </div>
   </div>
+
+<!--コメント-->
   <% if current_page?(want_clothes_path) %>
     <div class="row">
       <div class="col-md-8 offset-2 text-right mb-5 hide">
-        ▼send answer
+        <% if want_clothes.is_answer == true %>
+          ▼send answer
+        <% elsif want_clothes.want_answers.present? %>
+          ▼look answer
+        <% end %>
       </div>
+<!--コメントフォーム-->
       <div class="col-md-9 offset-2 open">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && want_clothes.is_answer == true %>
           <%= render 'want_answers/form', want_clothes: want_clothes, answer: @answer %>
         <% end %>
         <% if want_clothes.want_answers.present? %>
@@ -66,6 +82,7 @@
         <% end %>
       </div>
     </div>
+<!--コメント一覧-->
   <% elsif current_page?(user_path(want_clothes.user)) && want_clothes.want_answers.present? %>
     <div class="answer-index_<%= want_clothes.id.to_s %>">
       <%= render 'want_answers/index', want_clothes: want_clothes %>

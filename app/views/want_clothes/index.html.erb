@@ -6,9 +6,16 @@
           <%= render 'genres/index', genres: @genres, genre: @genre %>
       </div>
       <div class="tag-menu">
-        <h5>キーワード</h5>
-        まだ
-        クリックで開くメニューほしい
+        <h5 class="hide">タグ</h5>
+        <div class="open">
+          <table>
+            <% @tags.each do |tag| %>
+              &ensp;<i class="fas fa-tags"></i><%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+                <%= tag.name %>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
       </div>
     </div>
 
