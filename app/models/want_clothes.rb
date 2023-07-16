@@ -28,15 +28,7 @@ class WantClothes < ApplicationRecord
     end
   end
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      WantClothes.where(content: content)
-    elsif method == 'forward'
-      WantClothes.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      WantClothes.where('title LIKE ?', '%' + content)
-    else
-      WantClothes.where('title LIKE ?', '%' + content + '%')
-    end
+  def self.search_for(content)
+    WantClothes.where('content LIKE ?', '%' + content + '%')
   end
 end

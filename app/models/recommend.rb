@@ -19,15 +19,7 @@ class Recommend < ApplicationRecord
     recommend_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Recommend.where(title: content)
-    elsif method == 'forward'
-      Recommend.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Recommend.where('title LIKE ?', '%' + content)
-    else
-      Recommend.where('title LIKE ?', '%' + content + '%')
-    end
+  def self.search_for(content)
+    Recommend.where('content LIKE ?', '%' + content + '%')
   end
 end
