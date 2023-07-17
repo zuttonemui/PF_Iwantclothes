@@ -2,19 +2,20 @@
   <div class="row">
     <div class="col-md-4">
       <div class="category-menu mb-2">
-        <h5 class="hide">カテゴリ</h5>
+        <h5>カテゴリ</h5>
           <%= render 'genres/index', genres: @genres, genre: @genre %>
       </div>
       <div class="tag-menu">
-        <h5 class="hide">タグ</h5>
-        <div class="open">
-          <table>
-            <% @tags.each do |tag| %>
-              &ensp;<i class="fas fa-tags"></i><%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+        <h5>タグ</h5>
+        <div>
+          <% @tags.each do |tag| %>
+            &ensp;
+            <p class="want-tags">
+              <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
                 <%= tag.name %>
               <% end %>
-            <% end %>
-          </table>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>

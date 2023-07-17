@@ -1,18 +1,24 @@
 <% want_clothes.each do |want_clothes| %>
 <!--投稿一覧-->
-  <div class="row mb-3">
+  <div class="row mb-3 want-item">
     <div class="col-md-2">
       <%= link_to user_path(want_clothes.user) do %>
         <%= image_tag want_clothes.user.get_profile_image(80,80) %>
         <%= want_clothes.user.name %>
       <% end %>
     </div>
+
     <div class="col-md-9 px-5 want-content">
-      <div class="row pb-3">
+      <div class="row genre-box">
+        <% if want_clothes.genre.present? %>
+          <%= want_clothes.genre.name %>
+        <% end %>
+      </div>
+      <div class="row mt-4 mb-3">
         <%= want_clothes.content %>
       </div>
       <% if want_clothes.want_image.present? %>
-        <div class="row pb-2">
+        <div class="row pb-3">
           <%= image_tag want_clothes.get_want_image(400,300) %>
         </div>
       <% end %>
@@ -23,20 +29,17 @@
       <% end %>
       <% if want_clothes.tags.present? %>
         <div class="row pb-2">
-          <i class="fas fa-tags"></i>
           <% want_clothes.tags.each do |tag| %>
-            &ensp;<%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
-             <%= tag.name %>
-            <% end %>
+            &ensp;
+            <span class="want-tags">
+              <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+                <%= tag.name %>
+              <% end %>
+            </span>
           <% end %>
         </div>
       <% end %>
 
-      <% if want_clothes.genre.present? %>
-        <div class="row pb-2">
-          <%= want_clothes.genre.name %>
-        </div>
-      <% end %>
 
       <% if want_clothes.user == current_user %>
         <%= link_to want_clothes_path(id: want_clothes.id) do %>
