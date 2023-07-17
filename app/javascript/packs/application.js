@@ -21,6 +21,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 import "./swiper"
 import "./hide_open"
+import "./flash"
 // import "./heart"
 
 // $(document).on('turbolinks:load', function() {

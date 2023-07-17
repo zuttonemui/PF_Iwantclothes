@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :favorites, :unsubscribe, :withdraw]
+  before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
   def show
     @user = User.find(params[:id])
@@ -25,9 +25,11 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(params[:user_id])
   end
 
   def withdraw
+    @user = User.find(params[:user_id])
     @user.update(is_active: false)
     reset_session
     redirect_to about_path
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
     unless @user ==current_user
       redirect_to about_path
     end

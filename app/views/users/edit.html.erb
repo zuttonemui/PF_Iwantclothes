@@ -3,8 +3,8 @@
     <div class="col-md-4">
       <%= render "info", user: @user %>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-7">
+
+    <div class="col-md-7 offset-1">
       <h4 class="m-4">edit profile</h4>
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group edit-profile">
@@ -24,6 +24,9 @@
         </div>
         <div class="form-group edit-profile mt-5">
           <%= f.submit "send", class: "btn btn-outline-secondary btn-block" %>
+        </div>
+        <div class="form-group edit-profile">
+          <%= link_to "退会する", user_unsubscribe_path(@user), class: "btn btn-sm btn-default btn-block" %>
         </div>
       <% end %>
     </div>
