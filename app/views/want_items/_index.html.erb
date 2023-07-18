@@ -1,0 +1,94 @@
+<% want_items.each do |want_item| %>
+<!--投稿一覧-->
+  <div class="row mb-3 want-item">
+    <div class="col-md-2">
+      <%= link_to user_path(want_item.user) do %>
+        <%= image_tag want_item.user.get_profile_image(80,80) %>
+        <%= want_item.user.name %>
+      <% end %>
+    </div>
+
+    <div class="col-md-9 px-5 want-content">
+      <div class="row genre-box">
+        <% if want_item.genre.present? %>
+          <%= want_item.genre.name %>
+        <% end %>
+      </div>
+      <div class="row mt-4 mb-3">
+        <%= want_item.content %>
+      </div>
+      <% if want_item.want_image.present? %>
+        <div class="row pb-3">
+          <%= image_tag want_item.get_want_image(400,300) %>
+        </div>
+      <% end %>
+      <% if want_item.budget.present? %>
+        <div class="row pb-2">
+          予算：<%= want_item.budget %>円
+        </div>
+      <% end %>
+      <% if want_item.tags.present? %>
+        <div class="row pb-2">
+          <% want_item.tags.each do |tag| %>
+            &ensp;
+            <span class="want-tags">
+              <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
+                <%= tag.name %>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+
+
+      <% if want_item.user == current_user %>
+        <%= link_to want_items_path(id: want_item.id) do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+
+<!--コメント欄を閉じる-->
+        <% if want_item.is_answer == true %>
+          <%= form_with model: want_item, method: :patch do |f| %>
+            <%= f.hidden_field :is_answer, :value => false %>
+            <%= f.submit "resolved"%>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if want_item.user == current_user || current_user.is_admin == true %>
+        <%= link_to want_item_path(want_item), method: :delete do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<!--コメント-->
+  <% if current_page?(want_items_path) %>
+    <div class="row">
+      <div class="col-md-8 offset-2 text-right mb-5 hide">
+        <% if want_item.is_answer == true %>
+          ▼send answer
+        <% elsif want_item.want_answers.present? %>
+          ▼look answer
+        <% end %>
+      </div>
+<!--コメントフォーム-->
+      <div class="col-md-9 offset-2 open">
+        <% if user_signed_in? && want_item.is_answer == true %>
+          <%= render 'want_answers/form', want_item: want_item, answer: @answer %>
+        <% end %>
+        <% if want_item.want_answers.present? %>
+          <div class="answer-index_<%= want_item.id.to_s %>">
+            <%= render 'want_answers/index', want_item: want_item %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+<!--コメント一覧-->
+  <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
+    <div class="answer-index_<%= want_item.id.to_s %>">
+      <%= render 'want_answers/index', want_item: want_item %>
+    </div>
+  <% end %>
+<% end %>

@@ -23,10 +23,10 @@
     <div class="col-md-8">
       <% if user_signed_in? %>
         <div class="row mb-4">
-          <%= render 'form', want_clothing: @want_clothing %>
+          <%= render 'form', want_item: @want_item %>
         </div>
       <% end %>
-      <%= render 'index', want_clothes: @want_clothes %>
+      <%= render 'index', want_items: @want_items %>
     </div>
   </div>
 </div>

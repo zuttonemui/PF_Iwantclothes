@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     patch 'withdraw' => 'users#withdraw', as: 'withdraw'
   end
 
-  resources :want_clothes, only: [:index, :create, :update, :destroy] do
+  resources :want_items, only: [:index, :create, :update, :destroy] do
     resources :want_answers, only: [:create, :destroy]
   end
 

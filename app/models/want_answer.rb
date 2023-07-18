@@ -1,6 +1,6 @@
 class WantAnswer < ApplicationRecord
   belongs_to :user
-  belongs_to :want_clothes
+  belongs_to :want_item
 
   has_one_attached :answer_image
 

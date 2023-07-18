@@ -1,4 +1,4 @@
-class WantClothes < ApplicationRecord
+class WantItem < ApplicationRecord
   belongs_to :user
   belongs_to :genre, optional: true
   belongs_to :category, optional: true
@@ -30,6 +30,6 @@ class WantClothes < ApplicationRecord
   end
 
   def self.search_for(content)
-    WantClothes.where('content LIKE ?', '%' + content + '%')
+    WantItem.where('content LIKE ?', '%' + content + '%')
   end
 end

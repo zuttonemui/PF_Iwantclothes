@@ -4,8 +4,8 @@
       <tr>
         <td><%= genre.category %></td>
         <td><%= genre.name %></td>
-        <% if current_user.is_admin == true %>
-          <td cxlass="ml-2">
+        <% if user_signed_in? && current_user.is_admin == true %>
+          <td class="ml-2">
             <%= link_to genre_path(genre), method: :delete do%>
               <i class="fas fa-trash"></i>
             <% end %>
@@ -15,7 +15,7 @@
     <% end %>
   </table>
 </div>
-<% if current_user.is_admin == true %>
+<% if user_signed_in? && current_user.is_admin == true %>
   <%= render 'layouts/errors', obj: genre %>
   <%= form_with model: genre do |f| %>
     <div class="row form-group mt-3">

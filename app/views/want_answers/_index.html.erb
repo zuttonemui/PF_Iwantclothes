@@ -1,9 +1,9 @@
-<% want_clothes.want_answers.each do |answer| %>
+<% want_item.want_answers.each do |answer| %>
   <div class="row mb-3">
     <div class="col-md-9 mb-3 text-right">
       <%= raw Rinku.auto_link(simple_format(h(answer.content)), :all, 'target="_blank"') %>
       <% if answer.user == current_user || current_user.is_admin == true %>
-        <%= link_to want_clothe_want_answer_path(want_clothes, answer), method: :delete, remote: true do %>
+        <%= link_to want_item_want_answer_path(want_item, answer), method: :delete, remote: true do %>
           <i class="fas fa-trash"></i>
         <% end %>
       <% end %>

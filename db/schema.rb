@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_17_092020) do
+ActiveRecord::Schema.define(version: 2023_07_18_053236) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2023_07_17_092020) do
 
   create_table "cloth_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "want_clothes_id", null: false
+    t.integer "want_item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_cloth_tags_on_tag_id"
-    t.index ["want_clothes_id"], name: "index_cloth_tags_on_want_clothes_id"
+    t.index ["want_item_id"], name: "index_cloth_tags_on_want_item_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -137,13 +137,13 @@ ActiveRecord::Schema.define(version: 2023_07_17_092020) do
 
   create_table "want_answers", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "want_clothes_id", null: false
+    t.integer "want_item_id", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "want_clothes", force: :cascade do |t|
+  create_table "want_items", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "genre_id"
     t.text "content", null: false
@@ -157,5 +157,5 @@ ActiveRecord::Schema.define(version: 2023_07_17_092020) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "category_groups"
   add_foreign_key "cloth_tags", "tags"
-  add_foreign_key "cloth_tags", "want_clothes", column: "want_clothes_id"
+  add_foreign_key "cloth_tags", "want_items"
 end

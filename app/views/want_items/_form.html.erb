@@ -1,5 +1,5 @@
 <% unless params[:id].present? %>
-  <%= form_with model: want_clothing, url: want_clothes_path, local:true do |f| %>
+  <%= form_with model: want_item, local: true do |f| %>
     <div class="row">
       <div class="col-md-9 form-group want-form">
         <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
@@ -27,7 +27,7 @@
     </div>
   <% end %>
 <% else %>
-  <%= form_with model: @want_clothing, url: want_clothe_path(@want_clothing), method: :patch, local:true do |f| %>
+  <%= form_with model: @want_item, method: :patch, local: true do |f| %>
     <div class="row">
       <div class="col-md-9 form-group want-form">
         <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
