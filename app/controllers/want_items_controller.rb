@@ -13,6 +13,7 @@ class WantItemsController < ApplicationController
     @answer = WantAnswer.new
     @categories = Category.all
     @category = Category.new
+    @group = CategoryGroup.new
     @tags = Tag.all
   end
 

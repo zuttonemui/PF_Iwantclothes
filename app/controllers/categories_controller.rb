@@ -4,16 +4,16 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to want_clothes_path
+      redirect_to want_items_path
     else
-      redirect_to want_clothes_path
+      redirect_to want_items_path
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to want_clothes_path
+    redirect_to want_items_path
   end
 
   private

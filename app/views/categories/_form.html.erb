@@ -1,0 +1,14 @@
+<%= render 'layouts/errors', obj: category %>
+<%= form_with model: category do |f| %>
+  <div class="row mt-3">
+    <div class="form-group">
+      <%= f.collection_select(:category_group_id, CategoryGroup.all, :id, :name, {prompt: "　"}, {class: "form-control input-sm"}) %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :name, class: "form-control", placeholder: "shirts/pants/...etc" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "add category", class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>

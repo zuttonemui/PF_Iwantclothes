@@ -4,16 +4,16 @@ class CategoryGroupsController < ApplicationController
   def create
     @group = CategoryGroup.new(category_group_params)
     if @group.save
-      redirect_to want_clothes_path
+      redirect_to want_items_path
     else
-      redirect_to want_clothes_path
+      redirect_to want_items_path
     end
   end
 
   def destroy
     @group = CategoryGroup.find(params[:id])
     @group.destroy
-    redirect_to want_clothes_path
+    redirect_to want_items_path
   end
 
   private

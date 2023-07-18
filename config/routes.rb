@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  post 'category' => 'category#create', as: 'categories'
-  delete 'category/:id' => 'category#destroy', as: 'category'
+  resources :categories, only: [:create, :destroy]
+  resources :category_groups, only: [:create, :destroy]
 
   resources :rooms, only:[:index]
   resources :letters, only: [:show, :create]

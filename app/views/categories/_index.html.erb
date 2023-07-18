@@ -1,32 +1,28 @@
-<div class="mb-5">
-  <table>
-    <% categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <% if user_signed_in? && current_user.is_admin == true %>
-          <td class="ml-2">
-            <%= link_to category_path(category), method: :delete do%>
-              <i class="fas fa-trash"></i>
+<div class="mb-5 ml-3">
+<!--カテゴリ一覧-->
+  <% CategoryGroup.all.each do |group| %>
+  <p class="mb-2"><strong><%= group.name %></strong></p>
+    <table class="mb-3">
+      <% Category.where(category_group_id: group.id).each do |category| %>
+        <tbody class="ml-2">
+          <tr>
+            <td><%= category.name %></td>
+            <% if user_signed_in? && current_user.is_admin == true %>
+              <td class="ml-2">
+                <%= link_to category_path(category), method: :delete do%>
+                  <i class="fas fa-trash"></i>
+                <% end %>
+              </td>
             <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  <% end %>
 </div>
 <% if user_signed_in? && current_user.is_admin == true %>
-  <%= render 'layouts/errors', obj: category %>
-  <%= form_with model: category do |f| %>
-    <div class="row form-group mt-3">
-      <div>
-        <%= f.text_field :group, class: "form-control", placeholder: "tops/bottoms/...etc" %>
-      </div>
-      <div>
-        <%= f.text_field :name, class: "form-control", placeholder: "shirts/pants/...etc" %>
-      </div>
-      <div class="ml-3">
-        <%= f.submit "create", class: "btn btn-outline-secondary" %>
-      </div>
-    </div>
-  <% end %>
+<!--大分類追加-->
+  <%= render 'category_groups/form', group: group %>
+<!--カテゴリ追加-->
+  <%= render 'categories/form', category: category %>
 <% end %>
