@@ -1,25 +1,33 @@
-<div class="mb-5 ml-3">
 <!--カテゴリ一覧-->
-  <% CategoryGroup.all.each do |group| %>
-  <p class="mb-2"><strong><%= group.name %></strong></p>
-    <table class="mb-3">
+<% CategoryGroup.all.each do |group| %>
+  <div class="mb-3 ml-3">
+    <% if user_signed_in? && current_user.is_admin == true %>
+      <%= link_to category_group_path(group), method: :delete do%>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    <% end %>
+    <span class="mb-2 hide"><strong><%= group.name %></strong></span>
+
+    <table class="mb-3 open">
+      <tr>
+        <td>All</td>
+      </tr>
       <% Category.where(category_group_id: group.id).each do |category| %>
-        <tbody class="ml-2">
-          <tr>
-            <td><%= category.name %></td>
-            <% if user_signed_in? && current_user.is_admin == true %>
-              <td class="ml-2">
-                <%= link_to category_path(category), method: :delete do%>
-                  <i class="fas fa-trash"></i>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
+        <tr>
+          <td><%= category.name %></td>
+          <% if user_signed_in? && current_user.is_admin == true %>
+            <td class="ml-2">
+              <%= link_to category_path(category), method: :delete do%>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
       <% end %>
     </table>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
 <% if user_signed_in? && current_user.is_admin == true %>
 <!--大分類追加-->
   <%= render 'category_groups/form', group: group %>

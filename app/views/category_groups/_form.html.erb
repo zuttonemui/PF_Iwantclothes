@@ -1,10 +1,10 @@
 <%= render 'layouts/errors', obj: group %>
 <%= form_with model: group do |f| %>
   <div class="row my-3">
-    <div class="form-group">
+    <div class="col-8 form-group">
       <%= f.text_field :name, class: "form-control", placeholder: "Tops/Bottoms/...etc" %>
     </div>
-    <div class="form-group">
+    <div class="col-8 form-group">
       <%= f.submit "add group", class: "btn btn-outline-secondary" %>
     </div>
   </div>
