@@ -6,7 +6,11 @@ class WantAnswersController < ApplicationController
     @answer = WantAnswer.new(want_answer_params)
     @answer.user_id = current_user.id
     @answer.want_item_id = want_item.id
-    @answer.save
+    if @answer.save
+      @answer.want_item.create_notification_answer!(current_user, @answer.id)
+    else
+      render want_items_path
+    end
   end
 
   def destroy

@@ -2,6 +2,7 @@ class Recommend < ApplicationRecord
   belongs_to :user
   belongs_to :genre, optional: true
   has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :recommend_image
 
@@ -9,6 +10,18 @@ class Recommend < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def create_notification_fav!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and recommend_id = ? and action = ? ", current_user.id, user_id, id, 'fav'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        recommend_id: id,
+        visited_id: user_id,
+        action: 'fav'
+      )
+      notification.save if notification.valid?
+    end
   end
 
   def get_recommend_image(width, height)

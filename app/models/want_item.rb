@@ -14,6 +14,20 @@ class WantItem < ApplicationRecord
     want_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def save_notification_answer!(current_user, answer_id, visited_id)
+    notification = current_user.active_notifications.new(
+      recommend_id: nil,
+      answer_id: answer_id,
+      visited_id: visited_id,
+      action: 'answer'
+    )
+
+    if notification.visitor_id == notification.visited_id
+      notification.is_checked = true
+    end
+    notification.save if notification.valid?
+  end
+
   def save_tags(sent_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - sent_tags

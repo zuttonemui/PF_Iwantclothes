@@ -3,12 +3,12 @@
     <div class="col-md-4">
       <div class="category-menu mb-2">
         <h5 class="mb-3">カテゴリ</h5>
-          <%= render 'categories/index', categories: @categories, category: @category, group: @group %>
+          <%= render 'categories/index', categories: @categories, category: Category.new, group: CategoryGroup.new %>
       </div>
       <div class="tag-menu">
         <h5 class="mb-3">タグ</h5>
         <div>
-          <% @tags.each do |tag| %>
+          <% Tag.all.each do |tag| %>
             &ensp;
             <p class="want-tags">
               <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>

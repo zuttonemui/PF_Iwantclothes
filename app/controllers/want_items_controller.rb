@@ -11,10 +11,6 @@ class WantItemsController < ApplicationController
       @want_item = WantItem.new
     end
     @answer = WantAnswer.new
-    @categories = Category.all
-    @category = Category.new
-    @group = CategoryGroup.new
-    @tags = Tag.all
   end
 
   def create
