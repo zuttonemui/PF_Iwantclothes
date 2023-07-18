@@ -22,15 +22,3 @@ import '@fortawesome/fontawesome-free/js/all'
 import "./swiper"
 import "./hide_open"
 import "./flash"
-// import "./heart"
-
-// $(document).on('turbolinks:load', function() {
-//   $(document).ready(function open_answer() {
-//     let obj = "document.getElementById('commentopen_<%= want_clothes.id.to_s%>').style.display"
-//     if (obj == 'none') {
-//       document.getElementById('commentopen_<%= want_clothes.id.to_s%>').style.display = 'block';
-//     } else {
-//       document.getElementById('commentopen_<%= want_clothes.id.to_s%>').style.display = 'none';
-//     }
-//   });
-// });
