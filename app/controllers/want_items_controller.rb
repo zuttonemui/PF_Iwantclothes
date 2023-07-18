@@ -11,8 +11,8 @@ class WantItemsController < ApplicationController
       @want_item = WantItem.new
     end
     @answer = WantAnswer.new
-    @genres = Genre.all
-    @genre = Genre.new
+    @categories = Category.all
+    @category = Category.new
     @tags = Tag.all
   end
 

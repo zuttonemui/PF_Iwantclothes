@@ -53,6 +53,11 @@
             ログイン
           <% end %>
         </li>
+        <li class="px-3">
+          <%= link_to users_guest_sign_in_path ,class: 'nav-link text-dark', method: :post do %>
+            ゲストログイン
+          <% end %>
+        </li>
       <% end %>
       </ul>
       <li class="px-3 hide" style="list-style: none;">

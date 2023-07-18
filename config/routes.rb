@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+
   root :to => 'homes#top'
   get '/about' => 'homes#about', as: 'about'
 
@@ -23,9 +27,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :genres, only: [:create, :destroy]
+  post 'category' => 'category#create', as: 'categories'
+  delete 'category/:id' => 'category#destroy', as: 'category'
 
-  resources :rooms, only:[:index, :show]
+  resources :rooms, only:[:index]
   resources :letters, only: [:show, :create]
 
   get '/search', to: 'searches#search'

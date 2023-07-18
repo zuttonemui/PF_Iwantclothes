@@ -40,8 +40,7 @@
         </div>
       <% end %>
 
-
-      <% if want_item.user == current_user %>
+      <% if user_signed_in? && want_item.user == current_user %>
         <%= link_to want_items_path(id: want_item.id) do %>
           <i class="fas fa-pen"></i>
         <% end %>
@@ -55,7 +54,7 @@
         <% end %>
       <% end %>
 
-      <% if want_item.user == current_user || current_user.is_admin == true %>
+      <% if user_signed_in? && (want_item.user == current_user || current_user.is_admin == true) %>
         <%= link_to want_item_path(want_item), method: :delete do %>
           <i class="fas fa-trash"></i>
         <% end %>
@@ -66,15 +65,15 @@
 <!--コメント-->
   <% if current_page?(want_items_path) %>
     <div class="row">
-      <div class="col-md-8 offset-2 text-right mb-5 hide">
-        <% if want_item.is_answer == true %>
-          ▼send answer
+      <div class="col-md-8 offset-3 text-right mb-5 hide">
+        <% if want_item.is_answer == true && user_signed_in? %>
+          <span class="flash">▼ send answer</span>
         <% elsif want_item.want_answers.present? %>
-          ▼look answer
+          <span class="flash">▼ look answer</span>
         <% end %>
       </div>
 <!--コメントフォーム-->
-      <div class="col-md-9 offset-2 open">
+      <div class="col-md-9 offset-3 open">
         <% if user_signed_in? && want_item.is_answer == true %>
           <%= render 'want_answers/form', want_item: want_item, answer: @answer %>
         <% end %>

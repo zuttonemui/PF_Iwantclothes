@@ -15,7 +15,7 @@
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
-        
+
         <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="actions mt-3">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "Sign up", class: "btn btn-outline-secondary btn-sm" %>
         </div>
       <% end %>
 

@@ -1,5 +1,5 @@
 <div class="polaroid my-3">
-  <% if current_user == user %>
+  <% if current_user == user && current_user.is_admin == false %>
     <%= link_to edit_user_path(user) do %>
       <i class="fas fa-cog gear"></i>
     <% end %>
@@ -22,7 +22,6 @@
 </div>
 <div class="mb-3">
   <p class="introduction"><%= user.introduction %></p>
-  <p>tag tag tag tag</p>
 </div>
 
 <div class="row mb-3 follow-btn-<%= user.id %>">

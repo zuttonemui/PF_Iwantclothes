@@ -16,7 +16,7 @@
             <%= f.text_field :url, class: "form-control", placeholder: "ショップURL" %>
           </div>
           <div class="col-md-5 form-group reccomend-form">
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- カテゴリ --'}, class: "form-control" %>
+            <%= f.grouped_collection_select(:category_group_id, CategoryGroup.all, :categories, :name, :id, :name) %>
           </div>
           <div class="col-11 form-group text-center">
 

@@ -157,11 +157,18 @@ footer {
 //letter
 
 // want
+#canvas {
+  width: 260px;
+  height: 260px;
+  cursor: pointer;
+}
+
 .want-form {
   width: 100%;
 }
 
-.want-content {
+.want-content,
+.answer-content {
   display: block;
   position: relative;
   font-size: 14px;

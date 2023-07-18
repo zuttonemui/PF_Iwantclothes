@@ -1,57 +1,29 @@
-<% unless params[:id].present? %>
-  <%= form_with model: want_item, local: true do |f| %>
-    <div class="row">
-      <div class="col-md-9 form-group want-form">
-        <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
-      </div>
-      <div class="col-md-2 want-form">
-        <%= image_tag current_user.get_profile_image(80,80) %>
-      </div>
-      <div class="col-md-5 want-form">
-        <%= f.file_field :want_image, class: "form-control-file", accept: "image/*" %>
-      </div>
-      <div class="col-md-4 want-form mb-3">
-        <%= f.text_field :budget, class: "form-control", placeholder: "予算（円）" %>
-      </div>
-      <div class="col-md-4 form-group want-form">
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- カテゴリ --'}, class: "form-control" %>
-      </div>
-      <div class="col-md-5 form-group want-form">
-        <%= f.text_field :tag_name, value: @tag_list, class: "form-control", placeholder: "タグ( , で区切って複数付けられる)" %>
-      </div>
-
-      <div class="col-2 form-group">
-        <%= f.hidden_field :is_answer, value: true %>
-        <%= f.submit "欲しい！", class: 'btn btn-outline-secondary btn-sm' %>
-      </div>
+<%= form_with model: want_item, local: true do |f| %>
+  <div class="row">
+    <div class="col-md-9 form-group want-form">
+      <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
     </div>
-  <% end %>
-<% else %>
-  <%= form_with model: @want_item, method: :patch, local: true do |f| %>
-    <div class="row">
-      <div class="col-md-9 form-group want-form">
-        <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
-      </div>
-      <div class="col-md-2 want-form">
-        <%= image_tag current_user.get_profile_image(80,80) %>
-      </div>
-      <div class="col-md-5 want-form">
-        <%= f.file_field :want_image, class: "form-control-file", accept: "image/*" %>
-      </div>
-      <div class="col-md-4 want-form mb-3">
-        <%= f.text_field :budget, class: "form-control", placeholder: "予算（円）" %>
-      </div>
-      <div class="col-md-4 form-group want-form">
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- カテゴリ --'}, class: "form-control" %>
-      </div>
-      <div class="col-md-5 form-group want-form">
-        <%= f.text_field :tag_name, value: @tag_list, class: "form-control", placeholder: "タグまだ投稿できない" %>
-      </div>
-
-      <div class="col-2 form-group">
-        <%= f.hidden_field :is_answer, value: true %>
-        <%= f.submit "欲しい！", class: 'btn btn-outline-secondary btn-sm' %>
-      </div>
+    <div class="col-md-2 want-form">
+      <%= image_tag current_user.get_profile_image(80,80) %>
     </div>
-  <% end %>
+    <div class="col-md-5 want-form">
+      <%= f.file_field :want_image, class: "form-control-file", accept: "image/*" %>
+    </div>
+    <div class="col-md-4 want-form mb-3">
+      <%= f.text_field :budget, class: "form-control", placeholder: "予算（円）" %>
+    </div>
+    <div class="col-md-4 form-group want-form">
+      <!--<span class="form-control">-->
+      <%= f.grouped_collection_select(:category_group_id, CategoryGroup.all, :categories, :name, :id, :name, {prompt: "-- カテゴリ --"}, {class: "form-control input-sm"}) %>
+      <!--</span>-->
+    </div>
+    <div class="col-md-5 form-group want-form">
+      <%= f.text_field :tag_name, value: @tag_list, class: "form-control", placeholder: "タグ( , で区切って複数付けられる)" %>
+    </div>
+
+    <div class="col-2 form-group">
+      <%= f.hidden_field :is_answer, value: true %>
+      <%= f.submit "欲しい！", class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+  </div>
 <% end %>

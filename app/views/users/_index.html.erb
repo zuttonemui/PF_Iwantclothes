@@ -1,5 +1,5 @@
-<div class="row">
-  <% users.each do |user| %>
+<% users.each do |user| %>
+  <div class="row">
     <div class="col-md-3 text-center">
       <%= link_to user_path(user) do %>
         <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
@@ -20,5 +20,5 @@
       </div>
       </span>
     <% end %>
+  </div>
   <% end %>
-</div>

@@ -1,12 +1,11 @@
 <div class="mb-5">
   <table>
-    <% genres.each do |genre| %>
+    <% categories.each do |category| %>
       <tr>
-        <td><%= genre.category %></td>
-        <td><%= genre.name %></td>
+        <td><%= category.name %></td>
         <% if user_signed_in? && current_user.is_admin == true %>
           <td class="ml-2">
-            <%= link_to genre_path(genre), method: :delete do%>
+            <%= link_to category_path(category), method: :delete do%>
               <i class="fas fa-trash"></i>
             <% end %>
           </td>
@@ -16,11 +15,11 @@
   </table>
 </div>
 <% if user_signed_in? && current_user.is_admin == true %>
-  <%= render 'layouts/errors', obj: genre %>
-  <%= form_with model: genre do |f| %>
+  <%= render 'layouts/errors', obj: category %>
+  <%= form_with model: category do |f| %>
     <div class="row form-group mt-3">
       <div>
-        <%= f.text_field :category, class: "form-control", placeholder: "tops/bottoms/...etc" %>
+        <%= f.text_field :group, class: "form-control", placeholder: "tops/bottoms/...etc" %>
       </div>
       <div>
         <%= f.text_field :name, class: "form-control", placeholder: "shirts/pants/...etc" %>
