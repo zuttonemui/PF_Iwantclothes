@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @want_items = WantItem.where(user_id: @user.id, is_answer: true)
-    @recommends = @user.recommends.first(2)
+    @want_items = WantItem.where(user_id: current_user.followings.ids, is_answer: true)
+    @recommends = Recommend.where(user_id: current_user.followings.ids)
   end
 
   def edit

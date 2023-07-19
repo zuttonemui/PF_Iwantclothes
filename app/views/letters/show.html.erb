@@ -5,20 +5,13 @@
     </div>
     <div class="col-md-1 mypage-menu">
     </div>
-    <div class="col-md-7">
-      <h4 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">to <%= @user.name %></h4>
+    <div class="col-md-7 card">
+      <h5 class="room-header" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %></h5>
       <div class="message">
+
         <% @letters.each do |letter| %>
           <% if letter.user_id == current_user.id %>
-            <!--<div class="row">-->
-            <!--  <div class="col-8 offset-2 mb-3">-->
-                <p style="text-align: right;"><%= letter.message %></p>
-            <!--  </div>-->
-            <!--  <div class="col-2">-->
-
-            <!--  </div>-->
-            <!--</div>-->
-
+            <span class="message-list"><p style="text-align: right;"><%= letter.message %></p></span>
           <% else %>
             <p style="text-align: left;"><%= letter.message %></p>
           <% end %>

@@ -1,9 +1,9 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 side-menu">
       <%= render "info", user: @user %>
     </div>
-    <div class="col-md-1 mypage-menu">
+    <div class="col-md-1 mypage-menu side-menu">
       <% if @user == current_user %>
         <%= render 'mypage_menu', user: @user %>
       <% end %>

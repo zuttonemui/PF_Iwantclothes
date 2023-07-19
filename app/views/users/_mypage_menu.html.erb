@@ -15,6 +15,10 @@
 </div>
 <div class="text-center">
   <%= link_to notifications_path do %>
-    <i class="fas fa-bell"></i>
+    <% if current_user.passive_notifications.where(is_checked: false).exists? %>
+      <i class="fas fa-bell swing"></i>
+    <% else %>
+      <i class="fas fa-bell"></i>
+    <% end %>
   <% end %>
 </div>

@@ -1,33 +1,33 @@
 <!--カテゴリ一覧-->
 <% CategoryGroup.all.each do |group| %>
-  <div class="mb-3 ml-3">
-    <% if user_signed_in? && current_user.is_admin == true %>
-      <%= link_to category_group_path(group), method: :delete do%>
-        <i class="fas fa-trash"></i>
+  <ul class="mb-3 ml-3 list-unstyled">
+    <li class="mb-2">
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#group<%= group.id.to_s %>-collapse" aria-expanded="false">
+        <strong><%= group.name %></strong>
+      </button>
+      <% if user_signed_in? && current_user.is_admin == true %>
+        <%= link_to category_group_path(group), method: :delete do%>
+          <i class="fas fa-trash"></i>
+        <% end %>
       <% end %>
-    <% end %>
-    <span class="mb-2 hide"><strong><%= group.name %></strong></span>
-
-    <table class="mb-3 open">
-      <tr>
-        <td>All</td>
-      </tr>
-      <% Category.where(category_group_id: group.id).each do |category| %>
-        <tr>
-          <td><%= category.name %></td>
-          <% if user_signed_in? && current_user.is_admin == true %>
-            <td class="ml-2">
-              <%= link_to category_path(category), method: :delete do%>
-                <i class="fas fa-trash"></i>
+      <div class="collapse show" id="group<%= group.id.to_s %>-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>All</li>
+          <% Category.where(category_group_id: group.id).each do |category| %>
+            <li>
+              <%= category.name %>
+              <% if user_signed_in? && current_user.is_admin == true %>
+                <%= link_to category_path(category), method: :delete do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
               <% end %>
-            </td>
+            </li>
           <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+        </ul>
+      </div>
+    </li>
+  </ul>
 <% end %>
-
 <% if user_signed_in? && current_user.is_admin == true %>
 <!--大分類追加-->
   <%= render 'category_groups/form', group: group %>
