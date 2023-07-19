@@ -16,8 +16,9 @@
     <% if user_signed_in? %>
       <div class="recommend-edit-btn">
         <% if recommend.user == current_user %>
+          <%= recommend.favorites.count %>fav
           <span class="recommend-edit" data-toggle="modal" data-target="#editModal">
-            <i class="fas fa-pen mr-2"></i>
+            <i class="fas fa-edit mr-2"></i>
           </span>
           <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <%= render 'recommends/form', recommend: recommend %>

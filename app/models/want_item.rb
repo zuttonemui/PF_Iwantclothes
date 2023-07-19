@@ -14,11 +14,12 @@ class WantItem < ApplicationRecord
     want_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def save_notification_answer!(current_user, answer_id, visited_id)
+  def create_notification_answer!(current_user, want_answer_id)
     notification = current_user.active_notifications.new(
       recommend_id: nil,
-      answer_id: answer_id,
-      visited_id: visited_id,
+      want_item_id: id,
+      want_answer_id: want_answer_id,
+      visited_id: user_id,
       action: 'answer'
     )
 

@@ -42,7 +42,7 @@
 
       <% if user_signed_in? && want_item.user == current_user %>
         <%= link_to want_items_path(id: want_item.id) do %>
-          <i class="fas fa-pen"></i>
+          <i class="fas fa-edit"></i>
         <% end %>
 
 <!--コメント欄を閉じる-->

@@ -1,6 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Zen+Kaku+Gothic+Antique&family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Noto+Serif+JP&family=Zen+Maru+Gothic&display=swap');
 
 * {
   font-family: 'Montserrat','Zen Maru Gothic', sans-serif;
@@ -14,14 +14,15 @@ p {
   margin: 0;
 }
 
-.fa-pen,
+.fa-edit,
 .fa-trash {
   color: #2e2e2e;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .fa-trash:hover,
-.fa-pen:hover {
+.fa-edit:hover {
   opacity: 0.6;
 }
 
@@ -31,6 +32,29 @@ p {
 
 .hide {
   cursor: pointer;
+}
+
+.ja{
+  letter-spacing: -0.15em;
+}
+
+// logo typing
+.TextTyping {
+  text-align: center;
+}
+
+.TextTyping span {
+  display: none;
+}
+
+.TextTyping::after {
+  content: "|";
+  animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 // header
@@ -224,7 +248,7 @@ footer {
   right: 15px;
 }
 
-.want-content .fa-pen {
+.want-content .fa-edit {
   position: absolute;
   bottom: 15px;
   right: 40px;
@@ -280,6 +304,7 @@ footer {
   bottom: 20px;
   right: 20px;
 }
+
 // favorite animation
 .heart {
   color: #c9171e;

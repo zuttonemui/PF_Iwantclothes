@@ -22,3 +22,4 @@ import '@fortawesome/fontawesome-free/js/all'
 import "./swiper"
 import "./hide_open"
 import "./flash"
+import "./typing"

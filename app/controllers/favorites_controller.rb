@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     recommend = Recommend.find(params[:recommend_id])
     @favorite = current_user.favorites.new(recommend_id: recommend.id)
     @favorite.save
-    post.create_notification_fav!(current_user)
+    @favorite.recommend.create_notification_fav!(current_user)
     render 'replace_btn'
   end
 

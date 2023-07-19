@@ -8,6 +8,7 @@ class WantAnswersController < ApplicationController
     @answer.want_item_id = want_item.id
     if @answer.save
       @answer.want_item.create_notification_answer!(current_user, @answer.id)
+      respond_to :js
     else
       render want_items_path
     end
@@ -16,10 +17,11 @@ class WantAnswersController < ApplicationController
   def destroy
     @answer = WantAnswer.find_by(id: params[:id], want_item_id: params[:want_item_id])
     @answer.destroy
+    respond_to :js
   end
 
   private
   def want_answer_params
-    params.require(:want_answer).permit(:content, :url)
+    params.require(:want_answer).permit(:content)
   end
 end
