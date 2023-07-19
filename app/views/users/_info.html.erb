@@ -26,7 +26,5 @@
 
 <div class="row mb-3 follow-btn-<%= user.id %>">
   <%= render "relationships/btn", user: user %>
-  <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-    <%= link_to 'letter', letter_path(user), class: "btn btn-outline-secondary ml-3" %>
-  <% end %>
+  <%= render "letters/letter_btn", user: user %>
 </div>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
     member do
       get :favorites
+      get :dm
     end
     get 'unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'withdraw' => 'users#withdraw', as: 'withdraw'

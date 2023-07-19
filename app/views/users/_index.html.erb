@@ -10,15 +10,12 @@
         <%= user.name %>
       <% end %>
     </div>
-    <div class="col-md-2 d-flex align-items-center">
-      <span class="follow-btn-<%= user.id %>"><%= render "relationships/btn", user: user %>
+    <div class="col-md-3 d-flex align-items-center follow-btn-<%= user.id %>">
+      <%= render "relationships/btn", user: user %>
+      <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+      <i class="fas fa-handshake mx-3"></i>
+      <%= render "letters/letter_btn", user: user %>
+      <% end %>
     </div>
-    <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-      <div class="col-md-1 d-flex align-items-center">
-        <i class="fas fa-handshake"></i>
-        <%= link_to 'letter', letter_path(user), class: "btn btn-outline-secondary ml-3" %>
-      </div>
-      </span>
-    <% end %>
   </div>
-  <% end %>
+<% end %>
