@@ -49,13 +49,13 @@
         <% if want_item.is_answer == true %>
           <%= form_with model: want_item, method: :patch do |f| %>
             <%= f.hidden_field :is_answer, :value => false %>
-            <%= f.submit "resolved"%>
+            <%= f.submit "resolved", class: "btn btn-sm btn-default", data: {confirm: "コメント欄を閉じますか？ ※この操作は取り消せません"} %>
           <% end %>
         <% end %>
       <% end %>
 
       <% if user_signed_in? && (want_item.user == current_user || current_user.is_admin == true) %>
-        <%= link_to want_item_path(want_item), method: :delete do %>
+        <%= link_to want_item_path(want_item), method: :delete, data: {confirm: "本当に削除しますか？"}  do %>
           <i class="fas fa-trash"></i>
         <% end %>
       <% end %>
@@ -87,7 +87,7 @@
 <!--コメント一覧-->
   <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
     <div class="answer-index_<%= want_item.id.to_s %>">
-      <%= render 'want_answers/index', want_item: want_item %>
+      <%= render '<wan></wan>t_answers/index', want_item: want_item %>
     </div>
   <% end %>
 <% end %>

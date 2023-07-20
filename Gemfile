@@ -67,4 +67,5 @@ gem 'net-imap'
 
 gem 'devise'
 gem 'rinku'
-gem 'kaminari'
+gem 'kaminari','~> 1.2.1'
+gem 'toastr-rails'

@@ -40,8 +40,8 @@ class UsersController < ApplicationController
   def dm
     @user = User.find(params[:id])
     # 自分と相手のIDをもつEntryがない場合は作る、あれば取得する
-    my_room_ids = current_user.entries.pluck(:room_id) # [1, 2]
-    room_ids = @user.entries.pluck(:room_id) # [2, 3]
+    my_room_ids = current_user.entries.pluck(:room_id)
+    room_ids = @user.entries.pluck(:room_id)
     room_id = my_room_ids & room_ids
 
     if room_id.present?

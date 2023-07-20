@@ -16,8 +16,11 @@ ActiveStorage.start()
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"
-import '@fortawesome/fontawesome-free/js/all'
+import "../stylesheets/application";
+import "@fortawesome/fontawesome-free/js/all";
+import './src/application.scss'
+import toastr from 'toastr'
+window.toastr = toastr
 
 import "./swiper"
 import "./hide_open"
