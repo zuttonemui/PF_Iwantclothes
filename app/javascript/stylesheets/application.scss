@@ -10,6 +10,10 @@ a {
   color: inherit
 }
 
+a:hover {
+  color: inherit
+}
+
 p {
   margin: 0;
 }
@@ -178,6 +182,10 @@ footer {
 }
 
 // mypage_menu
+.mypage-menu li {
+  margin: 10px 5px;
+  list-style: none;
+}
 .swing {
    animation-name: swing;
    animation-duration: 2s;

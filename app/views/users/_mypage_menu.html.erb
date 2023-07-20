@@ -1,24 +1,31 @@
-<div class="text-center">
-  <%= link_to user_path(user) do %>
-    <i class="fas fa-home"></i>
-  <% end %>
-</div>
-<div class="text-center">
-  <%= link_to favorites_user_path(user) do %>
-    <i class="fas fa-heart"></i>
-  <% end %>
-</div>
-<div class="text-center">
-  <%= link_to user_followings_path(user) do %>
-    <i class="fas fa-praying-hands"></i>
-  <% end %>
-</div>
-<div class="text-center">
-  <%= link_to notifications_path do %>
-    <% if current_user.passive_notifications.where(is_checked: false).exists? %>
-      <i class="fas fa-bell swing"></i>
-    <% else %>
-      <i class="fas fa-bell"></i>
-    <% end %>
-  <% end %>
+<div class="mypage-menu">
+  <ul>
+    <li class="text-center flash">
+      <%= link_to user_path(user) do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+    </li>
+    <hr>
+    <li class="text-center flash">
+      <%= link_to favorites_user_path(user) do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    </li>
+    <hr>
+    <li class="text-center flash">
+      <%= link_to user_followings_path(user) do %>
+        <i class="fas fa-praying-hands"></i>
+      <% end %>
+    </li>
+    <hr>
+    <li class="text-center flash">
+      <%= link_to notifications_path do %>
+        <% if current_user.passive_notifications.where(is_checked: false).exists? %>
+          <i class="fas fa-bell swing"></i>
+        <% else %>
+          <i class="fas fa-bell"></i>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
 </div>

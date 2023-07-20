@@ -8,16 +8,16 @@
   <%= image_tag user.get_profile_image(180,180) %>
   <p>
     <%= user.name %>
-    <span>
-      <%= link_to do %>
+    <% if user.instagram.present? %>
+      <%= link_to user.instagram, target: "_blank", rel: "noopener noreferrer" do %>
         <%=image_tag "instagram.png", class: "icon" %>
       <% end %>
-    </span>
-    <span>
-      <%= link_to do %>
+    <% end %>
+    <% if user.twitter.present? %>
+      <%= link_to user.twitter, target: "_blank", rel: "noopener noreferrer" do %>
         <%=image_tag "twitter.png", class: "icon" %>
       <% end %>
-    </span>
+    <% end %>
   </p>
 </div>
 <div class="mb-3">

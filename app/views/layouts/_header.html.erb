@@ -7,53 +7,53 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to user_path(current_user),class: 'nav-link text-dark' do %>
             ミー
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%=  link_to want_items_path,class: 'nav-link text-dark' do %>
             アイウォント
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%=  link_to recommends_path ,class: 'nav-link text-dark' do %>
             リコメンド
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%=  link_to rooms_path ,class: 'nav-link text-dark' do %>
             レター
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
             ログアウト
           <% end %>
         </li>
       <% else %>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to want_items_path,class: 'nav-link text-dark' do %>
             ウォント
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to 'recommends',class: 'nav-link text-dark' do %>
             リコメンド
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
             サインアップ
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
             ログイン
           <% end %>
         </li>
-        <li class="px-3">
+        <li class="px-3 flash">
           <%= link_to users_guest_sign_in_path ,class: 'nav-link text-dark', method: :post do %>
             ゲストログイン
           <% end %>
