@@ -225,13 +225,14 @@ footer {
 }
 
 .message-window {
-  height: 60vh;
+  height: 50vh;
   overflow-y: scroll;
-  padding: 0 20px;
+  padding: 0 20px 20px;
 }
 
 .chat-input {
   display: flex;
+  width: 100%;
   align-items: center;
   padding: 10px;
   border-top: 1px solid #ccc;

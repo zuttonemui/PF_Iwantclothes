@@ -66,5 +66,5 @@ gem 'net-pop'
 gem 'net-imap'
 
 gem 'devise'
-
 gem 'rinku'
+gem 'kaminari'

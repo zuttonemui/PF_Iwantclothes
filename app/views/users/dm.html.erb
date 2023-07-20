@@ -4,27 +4,28 @@
       <%= render "rooms/index", rooms: current_user.rooms %>
     </div>
     <div class="col-md-7 offset-1 room">
-      <h5 class="room-header" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %></h5>
+      <h5 class="room-header" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= link_to @user.name, user_path(@user) %></h5>
       <div class="message-window">
         <% @letters.each do |letter| %>
           <div class="message-list my-3">
             <% if letter.user_id == current_user.id %>
               <p style="text-align: right;"><%= letter.message %></p>
             <% else %>
-              <p style="text-align: left;"><%= image_tag @room.chat_partner(current_user).get_profile_image(35,35), class: "rounded-circle mr-3" %><%= letter.message %></p>
+              <p style="text-align: left;"><%= image_tag @user.get_profile_image(35,35), class: "rounded-circle mr-3" %><%= letter.message %></p>
             <% end %>
-          <% end %>
-        </div>
-        <div class="errors">
+          </div>
+        <% end %>
+
+      </div>
+      <div class="errors">
           <%= render "layouts/errors", obj: @letter %>
         </div>
-        <div class="chat-input">
+        <div class=" chat-input">
           <%= form_with model: @letter, data: {remote: true} do |f| %>
-            <%= f.text_field :message, class: "form-control message-input", placeholder: "your message here" %>
+            <%= f.text_field :message, class: "w-100 form-control message-input", placeholder: "your message here" %>
             <%= f.hidden_field :room_id %>
           <% end %>
         </div>
-      </div>
     </div>
   </div>
 </div>
