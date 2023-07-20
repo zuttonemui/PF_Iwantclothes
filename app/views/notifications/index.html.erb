@@ -5,9 +5,7 @@
       <%= render "users/info", user: @user %>
     </div>
     <div class="col-md-1 mypage-menu">
-      <% if @user == current_user %>
-        <%= render 'users/mypage_menu', user: @user %>
-      <% end %>
+      <%= render 'users/mypage_menu', user: @user %>
     </div>
     <div class="col-md-8">
       <% if notifications.exists? %>

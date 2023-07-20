@@ -1,31 +1,29 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render "users/info", user: @user %>
+      <%= render "rooms/index", rooms: current_user.rooms %>
     </div>
-    <div class="col-md-7 offset-1 dm">
+    <div class="col-md-7 offset-1 room">
       <h5 class="room-header" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %></h5>
-      <div class="message">
+      <div class="message-window">
         <% @letters.each do |letter| %>
-          <% if letter.user_id == current_user.id %>
-            <div class="message-list my-3">
-              <p style="text-align: right;"><%= letter.message %><%= image_tag current_user.get_profile_image(35,35), class: "rounded-circle ml-3" %></p>
-            </div>
-          <% else %>
-            <p style="text-align: left;"><%= letter.message %></p>
+          <div class="message-list my-3">
+            <% if letter.user_id == current_user.id %>
+              <p style="text-align: right;"><%= letter.message %></p>
+            <% else %>
+              <p style="text-align: left;"><%= image_tag @room.chat_partner(current_user).get_profile_image(35,35), class: "rounded-circle mr-3" %><%= letter.message %></p>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-
-      <div class="errors">
-        <%= render "layouts/errors", obj: @letter %>
-      </div>
-
-      <div class="chat-input">
-        <%= form_with model: @letter, data: {remote: true} do |f| %>
-          <%= f.text_field :message, class: "form-control message-input", placeholder: "your message here" %>
-          <%= f.hidden_field :room_id %>
-        <% end %>
+        </div>
+        <div class="errors">
+          <%= render "layouts/errors", obj: @letter %>
+        </div>
+        <div class="chat-input">
+          <%= form_with model: @letter, data: {remote: true} do |f| %>
+            <%= f.text_field :message, class: "form-control message-input", placeholder: "your message here" %>
+            <%= f.hidden_field :room_id %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
