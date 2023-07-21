@@ -1,6 +1,6 @@
 class Recommend < ApplicationRecord
   belongs_to :user
-  belongs_to :genre, optional: true
+  belongs_to :category, optional: true
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 

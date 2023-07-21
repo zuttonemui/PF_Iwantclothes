@@ -19,13 +19,7 @@ class RecommendsController < ApplicationController
       redirect_to recommends_path
     else
       @user = current_user
-      render 'new'
-    end
-  end
-
-  def edit
-    unless @recommend.user == current_user
-      redirect_to recommends_path
+      render 'index'
     end
   end
 
@@ -34,7 +28,7 @@ class RecommendsController < ApplicationController
       flash[:notice] = "投稿を編集しました"
       redirect_to recommends_path
     else
-      render 'edit'
+      render 'index'
     end
   end
 

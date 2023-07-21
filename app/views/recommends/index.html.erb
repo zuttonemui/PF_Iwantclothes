@@ -1,20 +1,18 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-12 d-flex">
-      <!--新規投稿-->
-      <% if user_signed_in? %>
-        <div class="m-3 pb-3 recommend-item">
-          <canvas id="canvas" data-toggle="modal" data-target="#newModal">
-            ♡
-          </canvas>
-          <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <%= render 'form', recommend: @recommend %>
-          </div>
-          <p class="text-center">new recommend</p>
+<div class="mx-auto px-5">
+  <div class="d-flex flex-wrap">
+    <!--新規投稿-->
+    <% if user_signed_in? %>
+      <div class="m-3 pb-3 recommend-item">
+        <div class="new-btn" data-toggle="modal" data-target="#newModal">
+          ♡
         </div>
-      <% end %>
-      <!--一覧-->
-      <%= render 'index', recommends: @recommends %>
-    </div>
+        <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+          <%= render 'form', recommend: @recommend %>
+        </div>
+        <p class="text-center">new recommend</p>
+      </div>
+    <% end %>
+    <!--一覧-->
+    <%= render 'index', recommends: @recommends %>
   </div>
 </div>

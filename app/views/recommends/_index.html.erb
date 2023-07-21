@@ -1,41 +1,52 @@
-<% recommends.each do |recommend| %>
-  <div class="m-3 pb-3 recommend-item">
-    <div class="item">
-      <%= image_tag recommend.get_recommend_image(260,260) %>
-      <p><%= safe_join(recommend.content.split("\n"),tag(:br)) %></p>
-      <% if recommend.url.present? %>
-        <p><%= raw Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
-      <% end %>
-    </div>
-    <div class="mt-3 recommend-user">
-      <%= link_to user_path(recommend.user) do%>
-        <%= image_tag recommend.user.get_profile_image(50,50), class: "rounded-circle mr-4" %>
-        <%= recommend.user.name %>
-      <% end %>
-    </div>
-    <% if user_signed_in? %>
-      <div class="recommend-edit-btn">
-        <% if recommend.user == current_user %>
-          <%= recommend.favorites.count %>fav
-          <span class="recommend-edit" data-toggle="modal" data-target="#editModal">
-            <i class="fas fa-edit mr-2"></i>
-          </span>
-          <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <%= render 'recommends/form', recommend: recommend %>
+<!--<div class="swiper">-->
+<!--  <div class="swiper-wrapper">-->
+    <% recommends.each do |recommend| %>
+      <!--<div class="swiper-slide">-->
+        <div class="m-3 pb-3 recommend-item">
+          <div class="row genre-box">
+            <% if recommend.category.present? %>
+              <%= recommend.category.name %>
+            <% end %>
           </div>
-        <% else %>
-          <% unless current_user.is_admin == true %>
-            <span class=<%= "favorite-" + recommend.id.to_s %> >
-              <%= render 'favorites/btn', recommend: recommend %>
-            </span>
+          <div class="item">
+            <%= image_tag recommend.get_recommend_image(260,260) %>
+            <p><%= safe_join(recommend.content.split("\n"),tag(:br)) %></p>
+            <% if recommend.url.present? %>
+              <p><%= raw Rinku.auto_link(recommend.url, :all, 'target="_blank"').html_safe %></p>
+            <% end %>
+          </div>
+          <div class="mt-3 recommend-user">
+            <%= link_to user_path(recommend.user) do%>
+              <%= image_tag recommend.user.get_profile_image(50,50), class: "rounded-circle mr-4" %>
+              <%= recommend.user.name %>
+            <% end %>
+          </div>
+          <% if user_signed_in? %>
+            <div class="recommend-edit-btn">
+              <% if recommend.user == current_user %>
+                <%= recommend.favorites.count %> <i class="fas fa-heart heart"></i>
+                <span class="recommend-edit ml-3" data-toggle="modal" data-target="#editModal">
+                  <i class="fas fa-edit mr-2"></i>
+                </span>
+                <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                  <%= render 'recommends/form', recommend: recommend %>
+                </div>
+              <% else %>
+                <% unless current_user.is_admin == true %>
+                  <span class=<%= "favorite-" + recommend.id.to_s %> >
+                    <%= render 'favorites/btn', recommend: recommend %>
+                  </span>
+                <% end %>
+              <% end %>
+              <% if recommend.user == current_user || current_user.is_admin == true %>
+                <%= link_to recommend_path(recommend), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+                  <i class="fas fa-trash ml-1"></i>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
-        <% end %>
-        <% if recommend.user == current_user || current_user.is_admin == true %>
-          <%= link_to recommend_path(recommend), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
-            <i class="fas fa-trash ml-1"></i>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
+      <!--</div>-->
     <% end %>
-  </div>
-<% end %>
+<!--  </div>-->
+<!--</div>-->
