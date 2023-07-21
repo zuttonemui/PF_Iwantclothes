@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :want_answers, only: [:create, :destroy]
   end
 
-  resources :recommends, only: [:index, :new, :edit, :create, :update, :destroy] do
+  resources :recommends, only: [:index, :new, :create, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
   end
 

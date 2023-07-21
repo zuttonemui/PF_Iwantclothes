@@ -87,7 +87,7 @@
 <!--コメント一覧-->
   <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
     <div class="answer-index_<%= want_item.id.to_s %>">
-      <%= render '<wan></wan>t_answers/index', want_item: want_item %>
+      <%= render 'want_answers/index', want_item: want_item %>
     </div>
   <% end %>
 <% end %>

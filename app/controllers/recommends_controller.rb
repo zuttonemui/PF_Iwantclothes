@@ -50,6 +50,6 @@ class RecommendsController < ApplicationController
   end
 
   def recommend_params
-    params.require(:recommend).permit(:genre_id, :content, :recommend_image, :url)
+    params.require(:recommend).permit(:category_id, :content, :recommend_image, :url)
   end
 end
