@@ -80,7 +80,7 @@ header {
 // footer
 footer {
   margin-top: auto;
-  height: 100px;
+  height: 80px;
   line-height: 80px;
 }
 // homes#top
@@ -307,6 +307,16 @@ footer {
   width: 5px;
   background: #5e5f7b;
   border-radius: 5px 0 0 5px;
+}
+
+.a-box,
+.a-box-false {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+}
+
+.a-box-false {
 }
 
 .want-content .fa-trash {
