@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_20_070232) do
+ActiveRecord::Schema.define(version: 2023_07_21_052129) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
 
   create_table "cloth_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "want_clothes_id", null: false
+    t.integer "want_item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_cloth_tags_on_tag_id"
-    t.index ["want_clothes_id"], name: "index_cloth_tags_on_want_clothes_id"
+    t.index ["want_item_id"], name: "index_cloth_tags_on_want_item_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
 
   create_table "recommends", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "category_id", null: false
     t.string "content", null: false
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
 
   create_table "want_items", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id"
+    t.integer "category_id"
     t.text "content", null: false
     t.integer "budget"
     t.boolean "is_answer", null: false
@@ -164,5 +164,5 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "category_groups"
   add_foreign_key "cloth_tags", "tags"
-  add_foreign_key "cloth_tags", "want_clothes", column: "want_clothes_id"
+  add_foreign_key "cloth_tags", "want_items"
 end

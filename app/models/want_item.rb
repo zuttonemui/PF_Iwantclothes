@@ -1,7 +1,6 @@
 class WantItem < ApplicationRecord
   belongs_to :user
-  belongs_to :genre, optional: true
-  belongs_to :category, optional: true
+  belongs_to :category
   has_many :want_answers, dependent: :destroy
   has_many :cloth_tags, dependent: :destroy
   has_many :tags, through: :cloth_tags

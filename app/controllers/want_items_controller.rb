@@ -58,6 +58,6 @@ class WantItemsController < ApplicationController
   end
 
   def want_item_params
-    params.require(:want_item).permit(:genre_id, :content, :budget, :is_answer, :want_image)
+    params.require(:want_item).permit(:category_id, :content, :budget, :is_answer, :want_image)
   end
 end

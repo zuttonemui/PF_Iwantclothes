@@ -13,12 +13,11 @@
       <%= f.text_field :budget, class: "form-control", placeholder: "予算（円）" %>
     </div>
     <div class="col-md-4 form-group want-form">
-      <%= f.grouped_collection_select(:category_group_id, CategoryGroup.all, :categories, :name, :id, :name, {prompt: "-- カテゴリ --"}, {class: "form-control input-sm"}) %>
+      <%= f.grouped_collection_select(:category_id, CategoryGroup.all, :categories, :name, :id, :name, {prompt: "-- カテゴリ --"}, {class: "form-control input-sm"}) %>
     </div>
     <div class="col-md-5 form-group want-form">
       <%= f.text_field :tag_name, value: @tag_list, class: "form-control", placeholder: "タグ( , で区切って複数付けられる)" %>
     </div>
-
     <div class="col-2 form-group">
       <%= f.hidden_field :is_answer, value: true %>
       <%= f.submit "欲しい！", class: 'btn btn-outline-secondary btn-sm' %>
