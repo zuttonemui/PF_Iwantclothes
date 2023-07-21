@@ -15,6 +15,7 @@ class RecommendsController < ApplicationController
     @recommend = Recommend.new(recommend_params)
     @recommend.user_id = current_user.id
     if @recommend.save
+      flash[:notice] = "「オススメ！」"
       redirect_to recommends_path
     else
       @user = current_user
@@ -30,6 +31,7 @@ class RecommendsController < ApplicationController
 
   def update
     if @recommend.update(recommend_params)
+      flash[:notice] = "投稿を編集しました"
       redirect_to recommends_path
     else
       render 'edit'
@@ -40,7 +42,8 @@ class RecommendsController < ApplicationController
     unless @recommend.user == current_user || user.is_admin == true
       redirect_to recommends_path
     end
-    @recommend.destroy
+    @recommend.destroy!
+    flash[:notice] = "投稿を削除しました"
     redirect_to recommends_path
   end
 

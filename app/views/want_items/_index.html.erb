@@ -51,12 +51,12 @@
           <div class="row a-box">
             <%= form_with model: want_item, method: :patch do |f| %>
               <%= f.hidden_field :is_answer, :value => false %>
-              <%= f.submit "resolved ?", class: "btn btn-sm btn-default", data: {confirm: "コメント欄を閉じますか？ ※この操作は取り消せません"} %>
+              <%= f.submit "resolved ?", class: "btn btn-sm", data: {confirm: "コメント欄を閉じますか？ ※この操作は取り消せません"} %>
             <% end %>
           </div>
         <% elsif want_item.is_answer == false %>
           <div class="row a-box-false">
-            見つかった！
+            <span>見つけた！</span>
           </div>
         <% end %>
 
