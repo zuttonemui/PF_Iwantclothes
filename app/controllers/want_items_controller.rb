@@ -18,6 +18,7 @@ class WantItemsController < ApplicationController
     @want_item.user_id = current_user.id
     tag_list = params[:want_item][:tag_name].split(',')
     if @want_item.save
+      flash[:notice] = "「こんな服欲しい！」"
       @want_item.save_tags(tag_list)
       redirect_to want_items_path
     else
@@ -35,6 +36,7 @@ class WantItemsController < ApplicationController
 
   def update
     if @want_item.update(want_item_params)
+      flash[:notice] = "コメント欄を閉じました"
       redirect_to want_items_path
     else
       render 'edit'
@@ -46,6 +48,7 @@ class WantItemsController < ApplicationController
       redirect_to want_items_path
     end
     @want_item.destroy
+      flash[:notice] = "投稿を削除しました"
     redirect_to want_items_path
   end
 

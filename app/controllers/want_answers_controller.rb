@@ -18,7 +18,7 @@ class WantAnswersController < ApplicationController
   def destroy
     @answer = WantAnswer.find_by(id: params[:id], want_item_id: params[:want_item_id])
     @answer.destroy
-      flash[:danger] = "コメントを削除しました"
+      flash[:notice] = "コメントを削除しました"
     respond_to :js
   end
 

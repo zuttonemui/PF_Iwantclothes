@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
 
   create_table "cloth_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "want_item_id", null: false
+    t.integer "want_clothes_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_cloth_tags_on_tag_id"
-    t.index ["want_item_id"], name: "index_cloth_tags_on_want_item_id"
+    t.index ["want_clothes_id"], name: "index_cloth_tags_on_want_clothes_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -164,5 +164,5 @@ ActiveRecord::Schema.define(version: 2023_07_20_070232) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "category_groups"
   add_foreign_key "cloth_tags", "tags"
-  add_foreign_key "cloth_tags", "want_items"
+  add_foreign_key "cloth_tags", "want_clothes", column: "want_clothes_id"
 end

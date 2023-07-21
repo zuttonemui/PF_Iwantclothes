@@ -31,7 +31,7 @@
           <% end %>
         <% end %>
         <% if recommend.user == current_user || current_user.is_admin == true %>
-          <%= link_to recommend_path(recommend), method: :delete do %>
+          <%= link_to recommend_path(recommend), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
             <i class="fas fa-trash ml-1"></i>
           <% end %>
         <% end %>
