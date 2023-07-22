@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @want_items = WantItem.where(user_id: current_user.followings.ids, is_answer: true)

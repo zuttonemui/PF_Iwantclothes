@@ -1,6 +1,6 @@
 class WantItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :ensure_correct_user, only: [:update, :destroy]
+  before_action :ensure_correct_user, only: [:update, :destroy, :answer_close]
 
   def index
     if params[:id].present?
@@ -26,6 +26,12 @@ class WantItemsController < ApplicationController
       @want_items = WantItem.all
       render 'index'
     end
+  end
+
+  def answer_close
+    @want_item.update!(is_answer: false)
+    flash[:notice] = "コメント欄を閉じました"
+    redirect_to want_items_path
   end
 
   def update

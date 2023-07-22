@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root :to => 'homes#top'
   get '/about' => 'homes#about', as: 'about'
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   resources :want_items, only: [:index, :create, :update, :destroy] do
     resources :want_answers, only: [:create, :destroy]
+    member do
+      patch 'answer_close' => 'want_items#answer_close', as: 'answer_close'
+    end
   end
 
   resources :recommends, only: [:index, :new, :create, :update, :destroy] do

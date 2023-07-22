@@ -49,10 +49,7 @@
 <!--コメント欄を閉じる-->
         <% if user_signed_in? && want_item.user == current_user && want_item.is_answer == true %>
           <div class="row a-box">
-            <%= form_with model: want_item, method: :patch do |f| %>
-              <%= f.hidden_field :is_answer, :value => false %>
-              <%= f.submit "resolved ?", class: "btn btn-sm px-3", data: {confirm: "コメント欄を閉じますか？ ※この操作は取り消せません"} %>
-            <% end %>
+            <%= link_to "resolved ?", answer_close_want_item_path(want_item), method: :patch, "data-confirm" => "コメント欄を閉じますか？　※この操作は取り消せません", class: "btn btn-sm m" %>
           </div>
         <% elsif want_item.is_answer == false %>
           <div class="row a-box-false">
