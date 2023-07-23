@@ -4,11 +4,11 @@ class WantItemsController < ApplicationController
 
   def index
     if params[:id].present?
-      @want_items = WantItem.where.not(id: params[:id]).order(created_at: :desc)
+      @want_items = WantItem.where.not(id: params[:id]).page(params[:page]).per(10).order(created_at: :desc)
       @want_item = WantItem.find(params[:id])
       @tag_list = @want_item.tags.pluck(:name).join(',')
     else
-      @want_items = WantItem.all.order(created_at: :desc)
+      @want_items = WantItem.page(params[:page]).per(10).order(created_at: :desc)
       @want_item = WantItem.new
     end
     @answer = WantAnswer.new
@@ -23,7 +23,8 @@ class WantItemsController < ApplicationController
       @want_item.save_tags(tag_list)
       redirect_to want_items_path
     else
-      @want_items = WantItem.all
+      flash[:alert] = "必須項目が入力されていません"
+      @want_items = WantItem.all.page(params[:page]).per(10).order(created_at: :desc)
       render 'index'
     end
   end
@@ -41,7 +42,9 @@ class WantItemsController < ApplicationController
       @want_item.save_tags(tag_list)
       redirect_to want_items_path
     else
-      render 'edit'
+      flash[:alert] = "必須項目が入力されていません"
+      @want_items = WantItem.where.not(id: params[:id]).page(params[:page]).per(10).order(created_at: :desc)
+      render 'index'
     end
   end
 

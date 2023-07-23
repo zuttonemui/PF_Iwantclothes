@@ -3,15 +3,20 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
-    @want_items = WantItem.where(user_id: current_user.followings.ids, is_answer: true)
-    @recommends = Recommend.where(user_id: current_user.followings.ids)
-    params[:user_id]
-    params[:id]
+    if @user == current_user
+      @want_items = WantItem.where(user_id: current_user.followings.ids, is_answer: true).page(params[:page]).per(10)
+      @recommends = Recommend.where(user_id: current_user.followings.ids).page(params[:page]).per(10)
+      params[:user_id]
+      params[:id]
+    else
+      @want_items = @user.want_items.page(params[:page]).per(10)
+      @recommends = @user.recommends.page(params[:page]).per(10)
+    end
   end
 
   def edit
@@ -21,6 +26,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
+      flash[:alert] = "必須項目が入力されていません"
       render 'edit'
     end
   end

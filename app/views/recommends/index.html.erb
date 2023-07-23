@@ -1,4 +1,5 @@
 <div class="mx-auto px-5">
+  <%= render 'layouts/errors', obj: @recommend %>
   <div class="d-flex flex-wrap">
     <!--新規投稿-->
     <% if user_signed_in? %>

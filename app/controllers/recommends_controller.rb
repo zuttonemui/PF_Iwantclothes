@@ -3,7 +3,7 @@ class RecommendsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @recommends = Recommend.all.order(created_at: :desc)
+    @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
     if params[:id].present?
       @recommend = Recommend.find(params[:id])
     else
@@ -15,9 +15,11 @@ class RecommendsController < ApplicationController
     @recommend = Recommend.new(recommend_params)
     @recommend.user_id = current_user.id
     if @recommend.save
-      flash[:notice] = "「オススメ！」"
+      flash[:notice] = "「オススメ！」を投稿しました"
       redirect_to recommends_path
     else
+      flash[:alert] = "必須項目が入力されていません"
+      @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
       @user = current_user
       render 'index'
     end
@@ -28,6 +30,9 @@ class RecommendsController < ApplicationController
       flash[:notice] = "投稿を編集しました"
       redirect_to recommends_path
     else
+      flash[:alert] = "必須項目が入力されていません"
+      @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
+      @user = current_user
       render 'index'
     end
   end

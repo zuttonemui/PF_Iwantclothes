@@ -23,6 +23,7 @@
     <div class="col-md-8 main">
       <% if user_signed_in? %>
         <div class="row mb-4">
+          <%= render 'layouts/errors', obj: @want_item %>
           <%= render 'form', want_item: @want_item %>
         </div>
       <% end %>

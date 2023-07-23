@@ -6,6 +6,7 @@
 
     <div class="col-md-7 offset-1">
       <h4 class="m-4">edit profile</h4>
+      <%= render 'layouts/errors', obj: @user %>
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group edit-profile">
           <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
