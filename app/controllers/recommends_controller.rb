@@ -3,7 +3,7 @@ class RecommendsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
+    @recommends = Recommend.page(params[:page]).per(7).order(created_at: :desc)
     if params[:id].present?
       @recommend = Recommend.find(params[:id])
     else
@@ -38,9 +38,6 @@ class RecommendsController < ApplicationController
   end
 
   def destroy
-    unless @recommend.user == current_user || user.is_admin == true
-      redirect_to recommends_path
-    end
     @recommend.destroy!
     flash[:notice] = "投稿を削除しました"
     redirect_to recommends_path

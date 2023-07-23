@@ -49,9 +49,6 @@ class WantItemsController < ApplicationController
   end
 
   def destroy
-    unless @want_item.user == current_user || user.is_admin == true
-      redirect_to want_items_path
-    end
     @want_item.destroy!
     flash[:notice] = "投稿を削除しました"
     redirect_to want_items_path

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.where.not(is_admin: true).page(params[:page]).per(10)
   end
 
   def show

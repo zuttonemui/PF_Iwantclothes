@@ -1,5 +1,14 @@
 class CategoriesController < ApplicationController
-  before_action :ensure_correct_user
+  def want_item
+    @categories = Category.all
+    @category = Category.find(params[:id])
+    @want_items = @category.want_items.page(params[:page]).per(10).order(created_at: :desc)
+  end
+
+  def recommend
+    @category = Category.find(params[:id])
+    @recommends = Recommend.where(category_id: @category.id).page(params[:page]).per(8).order(created_at: :desc)
+  end
 
   def create
     @category = Category.new(category_params)
@@ -19,11 +28,5 @@ class CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:category_group_id, :name)
-  end
-
-  def ensure_correct_user
-    unless current_user.is_admin == true
-      redirect_to about_path
-    end
   end
 end

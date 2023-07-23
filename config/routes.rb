@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
   root :to => 'homes#top'
@@ -33,10 +33,21 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :categories, only: [:create, :destroy]
-  resources :category_groups, only: [:create, :destroy]
+  resources :categories, only: [:show, :create, :destroy] do
+    member do
+      get 'want_item' => 'categories#want_item'
+      get 'recommend' => 'categories#recommend'
+    end
+  end
 
-  resources :rooms, only:[:index]
+  resources :category_groups, only: [:show, :create, :destroy] do
+    member do
+      get 'want_item' => 'category_groups#want_item'
+      get 'recommend' => 'category_groups#recommend'
+    end
+  end
+
+  resources :rooms, only: [:index]
   resources :letters, only: [:show, :create]
 
   get '/search', to: 'searches#search'

@@ -1,9 +1,8 @@
 <% recommends.each do |recommend| %>
   <div class="m-3 pb-3 recommend-item">
     <div class="row genre-box">
-      <% if recommend.category.present? %>
-        <%= recommend.category.name %>
-      <% end %>
+      <%= link_to recommend.category.category_group.name, recommend_category_group_path(recommend.category.category_group) %> /
+      <%= link_to recommend.category.name, recommend_category_path(recommend.category) %>
     </div>
     <div class="item">
       <%= image_tag recommend.get_recommend_image(260,260) %>
@@ -44,6 +43,8 @@
     <% end %>
   </div>
 <% end %>
-<div class="col-12 mt-5">
-  <%= paginate recommends %>
-</div>
+<% if current_page?(recommends_path) || current_page?(recommend_category_path) || current_page?(recommend_category_group_path) %>
+  <div class="col-12 mt-5">
+    <%= paginate recommends %>
+  </div>
+<% end %>

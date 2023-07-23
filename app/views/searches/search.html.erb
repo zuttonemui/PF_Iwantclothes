@@ -1,10 +1,38 @@
-<% if @model == 'user' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
-<% elsif @model == 'want_item' || @model == 'tag' %>
-	<h3>Want_items search for "<%= @content %>"</h3>
-  <%= render 'want_items/index', want_items: @records %>
-<% elsif @model == 'recommend' %>
-	<h3>Recommends search for "<%= @content %>"</h3>
-  <%= render 'recommends/index', recommends: @records %>
-<% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-4 side-menu">
+      <% if @model == 'want_item' || @model == 'tag' %>
+        <div class="mb-2">
+          <h5 class="mb-3 ja">カテゴリ</h5>
+            <%= render 'categories/index', categories: @categories, category: Category.new, group: CategoryGroup.new %>
+        </div>
+        <div class="tag-menu">
+          <h5 class="mb-3 ja">タグ</h5>
+          <div>
+            <% Tag.all.each do |tag| %>
+              &ensp;
+              <p class="want-tags">
+                <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+                  <%= tag.name %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-8 main">
+      <% if @model == 'user' %>
+      	<h3>Users search for "<%= @content %>"</h3>
+        <%= render 'users/index', users: @records %>
+      <% elsif @model == 'want_item' || @model == 'tag' %>
+      	<h3>Want_items search for "<%= @content %>"</h3>
+        <%= render 'want_items/index', want_items: @records %>
+      <% elsif @model == 'recommend' %>
+      	<h3>Recommends search for "<%= @content %>"</h3>
+        <%= render 'recommends/index', recommends: @records %>
+      <% end %>
+    </div>
+  </div>
+</div>
