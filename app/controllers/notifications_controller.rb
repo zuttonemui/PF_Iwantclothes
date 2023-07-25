@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
   def index
     @user = current_user
-    @notifications = current_user.passive_notifications.all
+    @notifications = @user.passive_notifications.page(params[:page]).per(15)
     @notifications.where(is_checked: false).each do |notification|
       notification.update(is_checked: true)
     end

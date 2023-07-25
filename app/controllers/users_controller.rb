@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
   def index
-    @users = User.where.not(is_admin: true).page(params[:page]).per(10)
+    if current_user.is_admin == true
+      @users = User.where.not(is_admin: true).page(params[:page]).per(10)
+    else
+      redirect_to about_path
+    end
   end
 
   def show
@@ -42,9 +46,17 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:user_id])
-    @user.update(is_active: false)
-    reset_session
-    redirect_to about_path
+    if @user.is_active == true
+      @user.update(is_active: false)
+    else
+      @user.update(is_active: true)
+    end
+    if current_user.is_admin == false
+      reset_session
+      redirect_to about_path
+    else
+      redirect_to users_path
+    end
   end
 
   def dm

@@ -1,22 +1,27 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="p-4">
-  <span>
+<div class="row p-4">
+  <div class="col-2 offset-1 text-center">
     <%= link_to user_path(visitor) do %>
-      <%= image_tag visitor.get_profile_image(80,80), class: "rounded-circle" %>
+      <%= image_tag visitor.get_profile_image(80,80), class: "rounded-circle mr-3" %>
       <strong>
         <%= visitor.name %>
       </strong>
     <% end %>
-
-    <%= "さん" %>
-
+  </div>
     <% case notification.action %>
-    <% when 'follow' then %>
-      <%= "にフォローされました" %>
+      <% when 'follow' then %>
+        <div class="col-8 d-flex align-items-center">
+          <p class="mr-2">さんにフォローされました</p>
+          <% unless current_user.following?(visitor) %>
+            <span class="follow-btn-<%= visitor.id %>"><%= render 'relationships/btn', user: visitor %></span>
+          <% end %>
+        </div>
 
-    <% when 'fav' then %>
-      <%= "が " %><i class="fas fa-heart heart"></i><%= " しました" %>
+      <% when 'fav' then %>
+      <div class="col-8 d-flex align-items-center">
+        <p>さんが<i class="fas fa-heart heart"></i>しました</p>
+      </div>
       <div class="mx-auto pb-3 recommend-item">
         <div class="item">
           <%= image_tag notification.recommend.get_recommend_image(260,260) %>
@@ -33,8 +38,10 @@
         </div>
       </div>
 
-    <% when 'answer' then %>
-      <%= "が投稿にコメントしました" %>
+      <% when 'answer' then %>
+      <div class="col-8 d-flex align-items-center">
+        <p>さんが投稿にコメントしました</p>
+      </div>
       <div class="row my-3 want-item">
         <div class="col-md-8 offset-1 px-5 want-content">
           <div class="row genre-box">
@@ -70,10 +77,17 @@
         </div>
       </div>
       <%= render 'want_answers/index', want_item: notification.want_answer.want_item %>
-      </p>
-    <% else %>
+
+      <% when 'dm' %>
+        <div class="col-8 d-flex align-items-center">
+          <p>さんからレターが届きました</p>
+        </div>
+        <div class="col-8 offset-3">
+          <%= link_to dm_user_path(visitor) do %>
+            <%= truncate(notification.letter.message, length: 20, omission: '... (一部表示)') %>
+          <% end %>
+        </div>
     <% end %>
-  </span>
 </div>
 <div class="small text-muted text-right">
   <%= time_ago_in_words(notification.created_at).upcase %>

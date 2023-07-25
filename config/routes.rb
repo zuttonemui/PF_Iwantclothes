@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     patch 'withdraw' => 'users#withdraw', as: 'withdraw'
   end
 
-  resources :notifications, only: :index
+  resources :notifications, only: [:index]
 
   resources :want_items, only: [:index, :create, :update, :destroy] do
     resources :want_answers, only: [:create, :destroy]

@@ -7,7 +7,10 @@ class LettersController < ApplicationController
 
   def create
     @letter = current_user.letters.new(letter_params)
-    render :validater unless @letter.save
+    @room = @letter.room
+    if @letter.save
+      @room.create_notification_dm(current_user, @letter.id)
+    end
   end
 
   private

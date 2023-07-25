@@ -43,7 +43,7 @@
     <% end %>
   </div>
 <% end %>
-<% if current_page?(recommends_path) || current_page?(recommend_category_path) || current_page?(recommend_category_group_path) %>
+<% if current_page?(recommends_path) %>
   <div class="col-12 mt-5">
     <%= paginate recommends %>
   </div>

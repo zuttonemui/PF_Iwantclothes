@@ -19,7 +19,7 @@ class RecommendsController < ApplicationController
       redirect_to recommends_path
     else
       flash[:alert] = "必須項目が入力されていません"
-      @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
+      @recommends = Recommend.page(params[:page]).per(7).order(created_at: :desc)
       @user = current_user
       render 'index'
     end
@@ -31,7 +31,7 @@ class RecommendsController < ApplicationController
       redirect_to recommends_path
     else
       flash[:alert] = "必須項目が入力されていません"
-      @recommends = Recommend.page(params[:page]).per(8).order(created_at: :desc)
+      @recommends = Recommend.page(params[:page]).per(7).order(created_at: :desc)
       @user = current_user
       render 'index'
     end
