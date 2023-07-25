@@ -14,17 +14,17 @@
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to want_items_path,class: 'nav-link text-dark' do %>
+            <%=  link_to want_items_path, class: 'nav-link text-dark' do %>
               アイウォント
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to recommends_path ,class: 'nav-link text-dark' do %>
+            <%=  link_to recommends_path, class: 'nav-link text-dark' do %>
               リコメンド
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to rooms_path ,class: 'nav-link text-dark' do %>
+            <%=  link_to rooms_path, class: 'nav-link text-dark' do %>
               レター
             <% end %>
           </li>
@@ -35,22 +35,22 @@
           </li>
         <% else %>
           <li class="px-3 flash">
-            <%= link_to user_path(current_user),class: 'nav-link text-dark' do %>
+            <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
               ミー
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to want_items_path,class: 'nav-link text-dark' do %>
+            <%=  link_to want_items_path, class: 'nav-link text-dark' do %>
               アイウォント
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to recommends_path ,class: 'nav-link text-dark' do %>
+            <%=  link_to recommends_path, class: 'nav-link text-dark' do %>
               リコメンド
             <% end %>
           </li>
           <li class="px-3 flash">
-            <%=  link_to users_path ,class: 'nav-link text-dark' do %>
+            <%=  link_to users_path, class: 'nav-link text-dark' do %>
               ユーザー
             <% end %>
           </li>
@@ -62,12 +62,12 @@
         <% end %>
       <% else %>
         <li class="px-3 flash">
-          <%= link_to want_items_path,class: 'nav-link text-dark' do %>
+          <%= link_to want_items_path, class: 'nav-link text-dark' do %>
             ウォント
           <% end %>
         </li>
         <li class="px-3 flash">
-          <%= link_to 'recommends',class: 'nav-link text-dark' do %>
+          <%= link_to recommends_path, class: 'nav-link text-dark' do %>
             リコメンド
           <% end %>
         </li>
