@@ -250,6 +250,25 @@ footer {
   cursor: pointer;
   text-align: center;
   line-height: 260px;
+  background: #eee;
+}
+
+.new-btn div {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: #eee;
+  box-shadow: 5px 5px 5px #b3b3b3,
+             -5px -5px 5px #ffffff;
+}
+
+.new-btn div:hover {
+  box-shadow: inset 5px 5px 8px #b3b3b3,
+            inset -5px -5px 8px #ffffff;
+}
+
+.recommend-typing {
+  line-height: 100px;
 }
 
 .want-form {

@@ -11,7 +11,7 @@
           <% Tag.all.each do |tag| %>
             &ensp;
             <p class="want-tags">
-              <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+              <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
                 <%= tag.name %>
               <% end %>
             </span>
