@@ -92,6 +92,6 @@
     </div>
   <% end %>
 <% end %>
-<% if current_page?(want_items_path) || current_page?(want_item_category_path) || current_page?(want_item_category_group_path) %>
+<% if current_page?(want_items_path) %>
   <%= paginate want_items %>
 <% end %>
