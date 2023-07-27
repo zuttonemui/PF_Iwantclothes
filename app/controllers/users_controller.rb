@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if current_user.is_admin == true
       @users = User.where.not(is_admin: true).page(params[:page]).per(10)
     else
-      redirect_to about_path
+      redirect_to root_path
     end
   end
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     end
     if current_user.is_admin == false
       reset_session
-      redirect_to about_path
+      redirect_to root_path
     else
       redirect_to users_path
     end
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to about_path
+      redirect_to root_path
     end
   end
 end

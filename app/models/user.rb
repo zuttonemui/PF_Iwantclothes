@@ -68,4 +68,8 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
 end
