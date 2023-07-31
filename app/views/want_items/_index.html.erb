@@ -7,7 +7,6 @@
         <%= want_item.user.name %>
       <% end %>
     </div>
-
     <div class="col-md-9 px-5 want-content">
       <div class="row genre-box">
         <%= link_to want_item.category.name, want_item_category_path(want_item.category) %>
@@ -78,20 +77,16 @@
         <% if user_signed_in? && want_item.is_answer == true %>
           <%= render 'want_answers/form', want_item: want_item, answer: @answer %>
         <% end %>
-        <% if want_item.want_answers.present? %>
-          <div class="answer-index_<%= want_item.id.to_s %>">
-            <%= render 'want_answers/index', want_item: want_item %>
-          </div>
-        <% end %>
       </div>
 <!--コメント一覧-->
       <div class="col-md-9 offset-3 answer-index_<%= want_item.id.to_s %>">
-        <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
+        <% if want_item.want_answers.present? %>
           <%= render 'want_answers/index', want_item: want_item %>
         <% end %>
       </div>
     </div>
+  <% end %>
 <% end %>
-<% if current_page?(want_items_path) %>
-  <%= paginate want_items %>
-<% end %>
+  <% if current_page?(want_items_path) %>
+    <%= paginate want_items %>
+  <% end %>
