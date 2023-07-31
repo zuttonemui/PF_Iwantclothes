@@ -84,13 +84,13 @@
           </div>
         <% end %>
       </div>
-    </div>
 <!--コメント一覧-->
-  <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
-    <div class="answer-index_<%= want_item.id.to_s %>">
-      <%= render 'want_answers/index', want_item: want_item %>
+      <div class="col-md-9 offset-3 answer-index_<%= want_item.id.to_s %>">
+        <% elsif current_page?(user_path(want_item.user)) && want_item.want_answers.present? %>
+          <%= render 'want_answers/index', want_item: want_item %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
 <% end %>
 <% if current_page?(want_items_path) %>
   <%= paginate want_items %>
