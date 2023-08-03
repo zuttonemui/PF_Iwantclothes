@@ -42,8 +42,8 @@
       <div class="col-8 d-flex align-items-center">
         <p>さんが投稿にコメントしました</p>
       </div>
-      <div class="row my-3 want-item">
-        <div class="col-md-8 offset-1 px-5 want-content">
+      <div class="col-12 my-3 want-item">
+        <div class="col-md-10 offset-1 px-5 want-content">
           <div class="row genre-box">
             <% if notification.want_answer.want_item.category.present? %>
               <%= notification.want_answer.want_item.category.name %>
@@ -62,21 +62,21 @@
               予算：<%= notification.want_answer.want_item.budget %>円
             </div>
           <% end %>
-          <% if notification.want_answer.want_item.tags.present? %>
-            <div class="row pb-2">
-              <% notification.want_answer.want_item.tags.each do |tag| %>
-                &ensp;
-                <span class="want-tags">
-                  <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
-                    <%= tag.name %>
-                  <% end %>
-                </span>
-              <% end %>
-            </div>
-          <% end %>
+          <div class="row pb-2">
+            <% notification.want_answer.want_item.tags.each do |tag| %>
+              &ensp;
+              <span class="want-tags">
+                <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
+                  <%= tag.name %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
         </div>
       </div>
-      <%= render 'want_answers/index', want_item: notification.want_answer.want_item %>
+      <div class="col-10 offset-1 mt-4">
+        <%= render 'want_answers/index', want_item: notification.want_answer.want_item %>
+      </div>
 
       <% when 'dm' %>
         <div class="col-8 d-flex align-items-center">
