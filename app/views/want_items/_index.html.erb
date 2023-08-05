@@ -72,17 +72,16 @@
           <span class="flash">▼ look answer</span>
         <% end %>
       </div>
-<!--コメントフォーム-->
+<!--コメントフォーム・一覧（クリックで開く）-->
       <div class="col-md-9 offset-3 open">
         <% if user_signed_in? && want_item.is_answer == true %>
           <%= render 'want_answers/form', want_item: want_item, answer: @answer %>
         <% end %>
-      </div>
-<!--コメント一覧-->
-      <div class="col-md-9 offset-3 answer-index_<%= want_item.id.to_s %>">
-        <% if want_item.want_answers.present? %>
-          <%= render 'want_answers/index', want_item: want_item %>
-        <% end %>
+        <div class="col-md-11 answer-index_<%= want_item.id.to_s %>">
+          <% if want_item.want_answers.present? %>
+            <%= render 'want_answers/index', want_item: want_item %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
