@@ -72,7 +72,7 @@
           <span class="flash">▼ look answer</span>
         <% end %>
       </div>
-<!--コメントフォーム・一覧（クリックで開く）-->
+<!--コメントフォーム・一覧-->
       <div class="col-md-9 offset-3 open">
         <% if user_signed_in? && want_item.is_answer == true %>
           <%= render 'want_answers/form', want_item: want_item, answer: @answer %>
