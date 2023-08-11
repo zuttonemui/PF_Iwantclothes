@@ -1,7 +1,7 @@
 <%= form_with model: want_item, local: true do |f| %>
   <div class="row">
     <div class="col-md-9 form-group want-form">
-      <%= f.text_area :content, class: "form-control", placeholder: "こんな服ほしい！" %>
+      <%= f.text_area :content, class: "form-control", placeholder: "こんな服欲しい！" %>
     </div>
     <div class="col-md-2 want-form">
       <%= image_tag current_user.get_profile_image(80,80) %>
