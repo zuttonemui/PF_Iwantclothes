@@ -1,10 +1,6 @@
 class LettersController < ApplicationController
   before_action :reject_non_related, only: [:show]
 
-  def show
-
-  end
-
   def create
     @letter = current_user.letters.new(letter_params)
     @room = @letter.room

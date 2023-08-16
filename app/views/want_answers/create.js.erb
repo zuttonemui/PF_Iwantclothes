@@ -1,2 +1,3 @@
 $('.answer-textarea').val("")
 $(".answer-index_<%= @answer.want_item.id.to_s %>").html("<%= j(render 'want_answers/index', want_item: @answer.want_item) %>")
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");

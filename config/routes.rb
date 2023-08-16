@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: [:index]
-  resources :letters, only: [:show, :create]
+  resources :letters, only: [:create]
 
   get '/search', to: 'searches#search'
 end

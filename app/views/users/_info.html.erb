@@ -6,7 +6,7 @@
   <% end %>
 
   <%= image_tag user.get_profile_image(180,180) %>
-  <p>
+  <p class="user-content">
     <%= user.name %>
     <% if user.instagram.present? %>
       <%= link_to user.instagram, target: "_blank", rel: "noopener noreferrer" do %>
@@ -19,9 +19,9 @@
       <% end %>
     <% end %>
   </p>
+  <p class="introduction"><%= user.introduction %></p>
 </div>
 <div class="mb-3">
-  <p class="introduction"><%= user.introduction %></p>
 </div>
 
 <div class="row mb-3 follow-btn-<%= user.id %>">

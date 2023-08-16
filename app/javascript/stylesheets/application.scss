@@ -141,7 +141,7 @@ footer {
   border: 1px solid #ccc;
 }
 
-.polaroid p {
+.polaroid .user-content {
   text-align: center;
   left: 0;
   line-height: 60px;
@@ -155,6 +155,7 @@ footer {
 
 .introduction {
   margin: 20px 0;
+  font-size: 14px;
 }
 
 .gear {

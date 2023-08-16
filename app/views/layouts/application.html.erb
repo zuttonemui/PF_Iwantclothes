@@ -12,22 +12,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="whole">
-      <%= render 'layouts/header' %>
-      <main class="pt-3">
-        <%= yield %>
-      </main>
-      <%= render 'layouts/footer' %>
-      <% if flash.any? %>
-        <script type="text/javascript">
-          <% flash.each do |key, value| %>
-            <% key = "success" if key == "notice" %>
-            <% key = "error" if key == "alert" %>
-            toastr['<%= key %>']('<%= value %>');
-            <% end %>
-        </script>
-      <% end %>
-    </div>
+  <body class="whole">
+    <%= render 'layouts/header' %>
+    <main class="pt-3">
+      <%= yield %>
+      <div id="flash-message">
+        <%= render 'layouts/flash' %>
+      </div>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

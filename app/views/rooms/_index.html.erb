@@ -1,14 +1,18 @@
 <% rooms.each do |room| %>
-  <div>
-    <%= link_to dm_user_path(room.chat_partner(current_user)) do %>
-      <div>
-        <h4>
-          <%= opponent_user(room) %>
-        </h4>
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag room.chat_partner(current_user).get_profile_image(60,60), class: "rounded-circle mr-3" %>
+    </div>
+    <div class="col-8">
+      <%= link_to dm_user_path(room.chat_partner(current_user)) do %>
+        <h5>
+          <strong><%= room.chat_partner(current_user).name %></strong>
+        </h5>
         <p>
-          <%= most_new_message_preview(room) %>
+          <%= room.recent_message(room) %>
         </p>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+  <hr>
 <% end %>
