@@ -39,7 +39,7 @@ p {
   letter-spacing: -0.15em;
 }
 
-// logo typing
+// typing
 .TextTyping {
   text-align: center;
 }
@@ -173,6 +173,11 @@ footer {
   height: 100vh;
 }
 
+.follow-btn,
+.letter-btn {
+  width: 240px;
+}
+
 // mypage edit
 .edit-profile {
   width: 80%;
@@ -191,6 +196,7 @@ footer {
    animation-iteration-count: infinite;
    color: #d3a243;
 }
+
 @keyframes swing {
    0% { transform: rotate(0deg); }
    55% { transform: rotate(0deg); }

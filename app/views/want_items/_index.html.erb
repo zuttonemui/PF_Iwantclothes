@@ -12,7 +12,7 @@
         <%= link_to want_item.category.name, want_item_category_path(want_item.category) %>
       </div>
       <div class="row mt-4 mb-3">
-        <%= want_item.content %>
+        <%= safe_join(want_item.content.split("\n"),tag(:br)) %>
       </div>
       <% if want_item.want_image.present? %>
         <div class="row pb-3">
