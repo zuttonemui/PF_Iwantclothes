@@ -19,8 +19,8 @@
 ・好みが似ている人との交流を通じて、自分の知らなかった「好き」を見つける
 
 ## 設計書
-・UI_Flow、ER図 (https://drive.google.com/file/d/1vTYn9vFwhXzmaYNUgAuRGN_f29j0StFd/view?usp=sharing)
-・アプリケーション詳細設計書 (https://docs.google.com/spreadsheets/d/1IdoIOA-Oan1evZQvFgwTbd_qbJ7KpbMR7VIOXG85dLE/edit?usp=sharing)
+・UI_Flow、ER図 (https://drive.google.com/file/d/1vTYn9vFwhXzmaYNUgAuRGN_f29j0StFd/view?usp=sharing)<br>
+・アプリケーション詳細設計書 (https://docs.google.com/spreadsheets/d/1IdoIOA-Oan1evZQvFgwTbd_qbJ7KpbMR7VIOXG85dLE/edit?usp=sharing)<br>
 ・テーブル定義書 (https://docs.google.com/spreadsheets/d/1IoZQ4vf_QuvhX-dCDRzMIa0FHNwK_ZmNTSObXa5ZUhs/edit#gid=1373217982)
 
 ## 開発環境
@@ -30,7 +30,7 @@
 ・IDE：Cloud9
 
 ## 使用素材
-・写真素材
-　Shutterstock (https://www.shutterstock.com/)
-・ロゴ作成
+・写真素材<br>
+　Shutterstock (https://www.shutterstock.com/)<br>
+・ロゴ作成<br>
 　Canva (https://www.canva.com/)
