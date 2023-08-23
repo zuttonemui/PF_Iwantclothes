@@ -10,7 +10,6 @@
     <% end %>
   </div>
     <% case notification.action %>
-    
       <% when 'follow' then %>
         <div class="col-8 d-flex align-items-center">
           <p class="mr-2">さんにフォローされました</p>
@@ -18,67 +17,64 @@
             <span class="follow-btn-<%= visitor.id %>"><%= render 'relationships/btn', user: visitor %></span>
           <% end %>
         </div>
-
       <% when 'fav' then %>
-      <div class="col-8 d-flex align-items-center">
-        <p>さんが<i class="fas fa-heart heart"></i>しました</p>
-      </div>
-      <div class="mx-auto pb-3 recommend-item">
-        <div class="item">
-          <%= image_tag notification.recommend.get_recommend_image(260,260) %>
-          <p><%= safe_join(notification.recommend.content.split("\n"),tag(:br)) %></p>
-          <% if notification.recommend.url.present? %>
-            <p><%= raw Rinku.auto_link(notification.recommend.url, :all, 'target="_blank"').html_safe %></p>
-          <% end %>
+        <div class="col-8 d-flex align-items-center">
+          <p>さんが<i class="fas fa-heart heart"></i>しました</p>
         </div>
-        <div class="mt-3 recommend-user">
-          <%= link_to user_path(notification.recommend.user) do%>
-            <%= image_tag notification.recommend.user.get_profile_image(50,50), class: "rounded-circle mr-4" %>
-            <%= notification.recommend.user.name %>
-          <% end %>
+        <div class="mx-auto pb-3 recommend-item">
+          <div class="item">
+            <%= image_tag notification.recommend.get_recommend_image(260,260) %>
+            <p><%= safe_join(notification.recommend.content.split("\n"),tag(:br)) %></p>
+            <% if notification.recommend.url.present? %>
+              <p><%= raw Rinku.auto_link(notification.recommend.url, :all, 'target="_blank"').html_safe %></p>
+            <% end %>
+          </div>
+          <div class="mt-3 recommend-user">
+            <%= link_to user_path(notification.recommend.user) do%>
+              <%= image_tag notification.recommend.user.get_profile_image(50,50), class: "rounded-circle mr-4" %>
+              <%= notification.recommend.user.name %>
+            <% end %>
+          </div>
         </div>
-      </div>
-
       <% when 'answer' then %>
-      <div class="col-8 d-flex align-items-center">
-        <p>さんが投稿にコメントしました</p>
-      </div>
-      <div class="col-12 my-3 want-item">
-        <div class="col-md-10 offset-1 px-5 want-content">
-          <div class="row genre-box">
-            <% if notification.want_answer.want_item.category.present? %>
-              <%= notification.want_answer.want_item.category.name %>
-            <% end %>
-          </div>
-          <div class="row mt-4 mb-3">
-            <%= notification.want_answer.want_item.content %>
-          </div>
-          <% if notification.want_answer.want_item.want_image.present? %>
-            <div class="row pb-3">
-              <%= image_tag notification.want_answer.want_item.get_want_image(400,300) %>
+        <div class="col-8 d-flex align-items-center">
+          <p>さんが投稿にコメントしました</p>
+        </div>
+        <div class="col-12 my-3 want-item">
+          <div class="col-md-10 offset-1 px-5 want-content">
+            <div class="row genre-box">
+              <% if notification.want_answer.want_item.category.present? %>
+                <%= notification.want_answer.want_item.category.name %>
+              <% end %>
             </div>
-          <% end %>
-          <% if notification.want_answer.want_item.budget.present? %>
+            <div class="row mt-4 mb-3">
+              <%= notification.want_answer.want_item.content %>
+            </div>
+            <% if notification.want_answer.want_item.want_image.present? %>
+              <div class="row pb-3">
+                <%= image_tag notification.want_answer.want_item.get_want_image(400,300) %>
+              </div>
+            <% end %>
+            <% if notification.want_answer.want_item.budget.present? %>
+              <div class="row pb-2">
+                予算：<%= notification.want_answer.want_item.budget %>円
+              </div>
+            <% end %>
             <div class="row pb-2">
-              予算：<%= notification.want_answer.want_item.budget %>円
+              <% notification.want_answer.want_item.tags.each do |tag| %>
+                &ensp;
+                <span class="want-tags">
+                  <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
+                    <%= tag.name %>
+                  <% end %>
+                </span>
+              <% end %>
             </div>
-          <% end %>
-          <div class="row pb-2">
-            <% notification.want_answer.want_item.tags.each do |tag| %>
-              &ensp;
-              <span class="want-tags">
-                <%= link_to search_path(content: tag.name, model: "tag", method: "perfect") do %>
-                  <%= tag.name %>
-                <% end %>
-              </span>
-            <% end %>
           </div>
         </div>
-      </div>
-      <div class="col-10 offset-1 mt-4">
-        <%= render 'want_answers/index', want_item: notification.want_answer.want_item %>
-      </div>
-
+        <div class="col-10 offset-1 mt-4">
+          <%= render 'want_answers/index', want_item: notification.want_answer.want_item %>
+        </div>
       <% when 'dm' %>
         <div class="col-8 d-flex align-items-center">
           <p>さんからレターが届きました</p>
