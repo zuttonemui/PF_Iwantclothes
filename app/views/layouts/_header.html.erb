@@ -72,28 +72,30 @@
           <% end %>
         </li>
         <li class="px-3 flash">
-          <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+          <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
             サインアップ
           <% end %>
         </li>
         <li class="px-3 flash">
-          <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
+          <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
             ログイン
           <% end %>
         </li>
         <li class="px-3 flash">
-          <%= link_to users_guest_sign_in_path ,class: 'nav-link text-dark', method: :post do %>
+          <%= link_to users_guest_sign_in_path, class: 'nav-link text-dark', method: :post do %>
             ゲストログイン
           <% end %>
         </li>
       <% end %>
       </ul>
-      <li class="px-3 hide" style="list-style: none;">
-        <i class="fas fa-search"></i>
-      </li>
-      <div class="collapse open">
-        <%= render 'searches/form' %>
-      </div>
+      <% if user_signed_in? %>
+        <li class="px-3 hide" style="list-style: none;">
+          <i class="fas fa-search"></i>
+        </li>
+        <div class="collapse open">
+          <%= render 'searches/form' %>
+        </div>
+      <% end %>
     </div>
   </nav>
 </header>
