@@ -1,5 +1,6 @@
 class WantAnswersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :destroy]
 
   def create
     want_item = WantItem.find(params[:want_item_id])
@@ -25,5 +26,11 @@ class WantAnswersController < ApplicationController
   private
   def want_answer_params
     params.require(:want_answer).permit(:content)
+  end
+
+  def ensure_correct_user
+    unless @want_answer.user == current_user || current_user.is_admin == true
+      redirect_to want_items_path
+    end
   end
 end
