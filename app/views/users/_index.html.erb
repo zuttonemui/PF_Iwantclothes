@@ -15,13 +15,15 @@
         <%= render "relationships/btn", user: user %>
         <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
         <i class="fas fa-handshake mx-3"></i>
-        <%= render "letters/letter_btn", user: user %>
+        <span class="letter-btn-<%= user.id %>">
+          <%= render "letters/letter_btn", user: user %>
+        </span>
         <% end %>
       </div>
     <% else %>
       <% if user.is_active == true %>
         <div class="col-md-4 offset-1 d-flex align-items-center">
-          <%= link_to "ユーザーの利用を停止する", user_withdraw_path(user), method: :patch %>
+          <%= link_to "ユーザーの利用を停止する", user_withdraw_path(user), method: :patch, "data-confirm" => "ユーザーの利用を停止しますか？" %>
         </div>
       <% else %>
         <div class="col-md-4 offset-1 d-flex align-items-center">
