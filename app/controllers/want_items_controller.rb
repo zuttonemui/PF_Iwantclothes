@@ -57,6 +57,9 @@ class WantItemsController < ApplicationController
   private
   def ensure_correct_user
     @want_item = WantItem.find(params[:id])
+    unless @want_item.user == current_user || current_user.is_admin == true
+      redirect_to want_items_path
+    end
   end
 
   def want_item_params

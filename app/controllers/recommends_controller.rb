@@ -46,6 +46,9 @@ class RecommendsController < ApplicationController
   private
   def ensure_correct_user
     @recommend = Recommend.find(params[:id])
+    unless @recommend.user == current_user || current_user.is_admin == true
+      redirect_to recommends_path
+    end
   end
 
   def recommend_params
